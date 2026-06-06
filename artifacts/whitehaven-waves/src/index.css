@@ -585,31 +585,48 @@ ul { list-style: none; }
   padding: 3rem 2rem;
   overflow: visible;
 }
-.court__net {
-  position: absolute;
-  left: 0; right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 6px;
-  background: rgba(255,255,255,0.7);
+.court__net-top {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1.5rem;
 }
-.court__net::before, .court__net::after {
+.court__net-label {
+  font-family: var(--font-condensed);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.25rem 0;
+}
+.court__net-label--opponent { color: rgba(255,255,255,0.35); }
+.court__net-label--ours     { color: rgba(255,255,255,0.5); margin-top: 0.35rem; }
+.court__net-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.75);
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+.court__net-bar::before,
+.court__net-bar::after {
   content: '';
   position: absolute;
-  top: -20px;
+  top: -18px;
   width: 3px;
-  height: 46px;
+  height: 42px;
   background: rgba(255,255,255,0.5);
+  border-radius: 2px;
 }
-.court__net::before { left: 0; }
-.court__net::after  { right: 0; }
+.court__net-bar::before { left: 0; }
+.court__net-bar::after  { right: 0; }
 .court__row {
   display: flex;
   justify-content: space-around;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
-.court__row--back  { margin-bottom: 2.5rem; }
-.court__row--front { margin-top: 2.5rem; }
+.court__row--front { margin-top: 0.5rem; }
+.court__row--back  { margin-bottom: 0.5rem; }
 .player-pin { position: relative; text-align: center; }
 .player-pin__dot {
   width: 44px; height: 44px;
@@ -621,9 +638,12 @@ ul { list-style: none; }
   transition: all var(--transition);
   box-shadow: 0 0 16px rgba(14,165,233,0.5);
 }
-.player-pin:hover .player-pin__dot {
-  transform: scale(1.2);
-  box-shadow: 0 0 28px rgba(14,165,233,0.8);
+.player-pin:hover .player-pin__dot,
+.player-pin__dot--active {
+  transform: scale(1.25) !important;
+  background: var(--c-sand) !important;
+  box-shadow: 0 0 28px rgba(251,191,36,0.8) !important;
+  border-color: var(--c-sand-light) !important;
 }
 .player-pin__info {
   position: absolute;
@@ -652,6 +672,52 @@ ul { list-style: none; }
   width: 50px;
   animation: float 4s ease-in-out infinite;
 }
+.court__hover-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 52px;
+  margin: 1rem 0 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--ww-border);
+  background: var(--bg-card);
+  transition: all var(--transition);
+  opacity: 0.5;
+}
+.court__hover-card--visible {
+  opacity: 1;
+  border-color: var(--c-sand);
+  box-shadow: 0 0 20px rgba(251,191,36,0.15);
+}
+.court__hover-hint {
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.court__hover-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--c-sand);
+  line-height: 1;
+}
+.court__hover-name {
+  font-family: var(--font-condensed);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.court__hover-role {
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ww-accent);
+}
+
 .roster { margin-top: var(--space-md); }
 .roster__title {
   font-family: var(--font-condensed);
@@ -675,6 +741,8 @@ ul { list-style: none; }
 .roster__table tbody tr { transition: background var(--transition); }
 .roster__table tbody tr:hover { background: var(--bg-card-hover); }
 .roster__row--starter td:first-child { color: var(--ww-accent); font-weight: 700; }
+.roster__row--highlighted { background: rgba(251,191,36,0.1) !important; outline: 1.5px solid rgba(251,191,36,0.4); outline-offset: -1px; }
+.roster__row--highlighted td:first-child { color: var(--c-sand) !important; }
 
 /* ============================================================
    TIMETABLE
