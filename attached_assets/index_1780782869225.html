@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whitehaven Waves Volleyball</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="mainNav">
+    <div class="nav__brand">
+      <div class="nav__logo">
+        <!-- REPLACE: swap the SVG below with your actual logo image -->
+        <svg class="nav__logo-icon" viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 38 Q20 28 30 38 Q40 48 50 38" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M10 30 Q20 20 30 30 Q40 40 50 30" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <text x="50%" y="22" dominant-baseline="middle" text-anchor="middle" font-family="Bebas Neue" font-size="11" fill="currentColor">WAVES</text>
+        </svg>
+        <span class="nav__team-name">Whitehaven<em>Waves</em></span>
+      </div>
+    </div>
+
+    <button class="nav__hamburger" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#about" class="nav__link">About</a></li>
+      <li><a href="#team" class="nav__link">The Team</a></li>
+      <li><a href="#lineup" class="nav__link">Line-Up</a></li>
+      <li><a href="#timetable" class="nav__link">Timetable</a></li>
+      <li><a href="#highlights" class="nav__link">Highlights</a></li>
+      <li><a href="#staff" class="nav__link">Staff</a></li>
+      <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <span class="theme-toggle__icon theme-toggle__icon--dark">🌊</span>
+          <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="home">
+    <!-- Animated wave layers -->
+    <div class="hero__waves">
+      <div class="wave wave--1"></div>
+      <div class="wave wave--2"></div>
+      <div class="wave wave--3"></div>
+    </div>
+
+    <!-- REPLACE: Update hero background image URL below -->
+    <div class="hero__bg" style="background-image: url('assets/hero-bg.jpg')"></div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Est. <!--REPLACE: Year Founded--> 2020</p>
+      <h1 class="hero__title">
+        <span class="hero__title-line">Whitehaven</span>
+        <span class="hero__title-wave">Waves</span>
+      </h1>
+      <p class="hero__tagline"><!-- REPLACE: Your team tagline -->
+        Ride the wave. Spike the game.
+      </p>
+      <div class="hero__cta-group">
+        <a href="#team" class="btn btn--primary">Meet the Team</a>
+        <a href="#highlights" class="btn btn--ghost">Watch Highlights</a>
+      </div>
+    </div>
+
+    <!-- Scrolling ticker -->
+    <div class="hero__ticker">
+      <div class="ticker__track">
+        <!-- REPLACE: Update latest match results below -->
+        <span class="ticker__item">⚡ Latest: Waves 3 – 1 Redshore FC</span>
+        <span class="ticker__item">🏆 League Position: 2nd</span>
+        <span class="ticker__item">📅 Next Match: vs. Coastal United – Sat 14 Jun</span>
+        <span class="ticker__item">🌊 Season Record: W 8 · L 2 · D 1</span>
+        <span class="ticker__item">⚡ Latest: Waves 3 – 1 Redshore FC</span>
+        <span class="ticker__item">🏆 League Position: 2nd</span>
+        <span class="ticker__item">📅 Next Match: vs. Coastal United – Sat 14 Jun</span>
+        <span class="ticker__item">🌊 Season Record: W 8 · L 2 · D 1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section class="section about" id="about">
+    <div class="wave-divider wave-divider--top"></div>
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <span class="section-label">Who We Are</span>
+          <h2 class="section-title">Volleyball is our<br/>heartbeat</h2>
+          <p class="about__body">
+            <!-- REPLACE: Write your club's story here -->
+            Founded in the coastal town of Whitehaven, the Waves are more than a volleyball team —
+            we're a family forged by the tides. From grassroots beginnings on the sand to competing
+            at regional level, our players bring the relentless energy of the ocean to every set,
+            spike, and serve.
+          </p>
+          <p class="about__body">
+            <!-- REPLACE: Continue your story -->
+            We believe in building athletes who are fearless on the court and grounded off it.
+            Training hard, playing harder, and always showing up for each other — that's the
+            Whitehaven way.
+          </p>
+          <div class="about__stats">
+            <!-- REPLACE: Update stat numbers -->
+            <div class="stat">
+              <span class="stat__number" data-target="6">0</span>
+              <span class="stat__label">Years Active</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number" data-target="14">0</span>
+              <span class="stat__label">Squad Members</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number" data-target="3">0</span>
+              <span class="stat__label">Trophies Won</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scrolling gallery -->
+        <div class="about__gallery reveal reveal--right">
+          <div class="gallery-scroll">
+            <!-- REPLACE: Add your team photo paths below -->
+            <div class="gallery-scroll__track">
+              <div class="gallery-card" style="background-image: url('assets/photo-1.jpg')">
+                <span class="gallery-card__caption"><!-- REPLACE: Photo caption --> Match Day</span>
+              </div>
+              <div class="gallery-card" style="background-image: url('assets/photo-2.jpg')">
+                <span class="gallery-card__caption"><!-- REPLACE --> Training Session</span>
+              </div>
+              <div class="gallery-card" style="background-image: url('assets/photo-3.jpg')">
+                <span class="gallery-card__caption"><!-- REPLACE --> Championship Run</span>
+              </div>
+              <div class="gallery-card" style="background-image: url('assets/photo-4.jpg')">
+                <span class="gallery-card__caption"><!-- REPLACE --> Team Spirit</span>
+              </div>
+              <div class="gallery-card" style="background-image: url('assets/photo-5.jpg')">
+                <span class="gallery-card__caption"><!-- REPLACE --> Victory Celebration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--bottom"></div>
+  </section>
+
+  <!-- ============================================================
+       VOLLEYBALL LINE-UP SECTION
+  ============================================================ -->
+  <section class="section lineup" id="lineup">
+    <div class="container">
+      <span class="section-label">The Starting Six</span>
+      <h2 class="section-title section-title--center">Current Line-Up</h2>
+
+      <!-- Court Visualiser -->
+      <div class="court reveal">
+        <div class="court__surface">
+          <div class="court__net"></div>
+          <div class="court__line court__line--centre"></div>
+
+          <!-- BACK ROW (positions 1, 6, 5) -->
+          <div class="court__row court__row--back">
+            <div class="player-pin" data-pos="1">
+              <div class="player-pin__dot"></div>
+              <div class="player-pin__info">
+                <!-- REPLACE: Player number, name, role -->
+                <span class="player-pin__number">#1</span>
+                <span class="player-pin__name">Alex Rivera</span>
+                <span class="player-pin__role">Setter</span>
+              </div>
+            </div>
+            <div class="player-pin" data-pos="6">
+              <div class="player-pin__dot"></div>
+              <div class="player-pin__info">
+                <!-- REPLACE -->
+                <span class="player-pin__number">#6</span>
+                <span class="player-pin__name">Jordan Lee</span>
+                <span class="player-pin__role">Libero</span>
+              </div>
+            </div>
+            <div class="player-pin" data-pos="5">
+              <div class="player-pin__dot"></div>
+              <div class="player-pin__info">
+                <!-- REPLACE -->
+                <span class="player-pin__number">#5</span>
+                <span class="player-pin__name">Sam Okafor</span>
+                <span class="player-pin__role">Outside Hitter</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FRONT ROW (positions 2, 3, 4) -->
+          <div class="court__row court__row--front">
+            <div class="player-pin" data-pos="2">
+              <div class="player-pin__dot"></div>
+              <div class="player-pin__info">
+                <!-- REPLACE -->
+                <span class="player-pin__number">#2</span>
+                <span class="player-pin__name">Morgan Chen</span>
+                <span class="player-pin__role">Right Side Hitter</span>
+              </div>
+            </div>
+            <div class="player-pin" data-pos="3">
+              <div class="player-pin__dot"></div>
+              <div class="player-pin__info">
+                <!-- REPLACE -->
+                <span class="player-pin__number">#3</span>
+                <span class="player-pin__name">Casey Walsh</span>
+                <span class="player-pin__role">Middle Blocker</span>
+              </div>
+            </div>
+            <div class="player-pin" data-pos="4">
+              <div class="player-pin__dot"></div>
+              <div class="player-pin__info">
+                <!-- REPLACE -->
+                <span class="player-pin__number">#4</span>
+                <span class="player-pin__name">Riley Storm</span>
+                <span class="player-pin__role">Outside Hitter</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Volleyball SVG decoration -->
+          <div class="court__ball">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" fill="white" opacity="0.9"/>
+              <path d="M2 20 Q10 8 20 8 Q30 8 38 20" stroke="#0ea5e9" stroke-width="1.5" fill="none"/>
+              <path d="M2 20 Q10 32 20 32 Q30 32 38 20" stroke="#0ea5e9" stroke-width="1.5" fill="none"/>
+              <path d="M14 2 Q8 14 8 20 Q8 26 14 38" stroke="#06b6d4" stroke-width="1.5" fill="none"/>
+              <path d="M26 2 Q32 14 32 20 Q32 26 26 38" stroke="#06b6d4" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full squad roster -->
+      <div class="roster reveal">
+        <h3 class="roster__title">Full Squad Roster</h3>
+        <div class="roster__table-wrap">
+          <table class="roster__table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Height</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- REPLACE: Add all player rows below. Copy <tr>…</tr> to add more rows -->
+              <tr class="roster__row roster__row--starter">
+                <td>1</td>
+                <td>Alex Rivera</td>
+                <td>Setter</td>
+                <td>5'10"</td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <tr class="roster__row roster__row--starter">
+                <td>2</td>
+                <td>Morgan Chen</td>
+                <td>Right Side Hitter</td>
+                <td>6'1"</td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <tr class="roster__row roster__row--starter">
+                <td>3</td>
+                <td>Casey Walsh</td>
+                <td>Middle Blocker</td>
+                <td>6'3"</td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <tr class="roster__row roster__row--starter">
+                <td>4</td>
+                <td>Riley Storm</td>
+                <td>Outside Hitter</td>
+                <td>5'11"</td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <tr class="roster__row roster__row--starter">
+                <td>5</td>
+                <td>Sam Okafor</td>
+                <td>Outside Hitter</td>
+                <td>6'0"</td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <tr class="roster__row roster__row--starter">
+                <td>6</td>
+                <td>Jordan Lee</td>
+                <td>Libero</td>
+                <td>5'8"</td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <!-- REPLACE: Bench / reserve players -->
+              <tr class="roster__row">
+                <td>7</td>
+                <td><!-- REPLACE: Player Name --> Taylor Knox</td>
+                <td>Setter</td>
+                <td>5'9"</td>
+                <td><span class="badge badge--bench">Bench</span></td>
+              </tr>
+              <tr class="roster__row">
+                <td>8</td>
+                <td><!-- REPLACE --> Drew Summers</td>
+                <td>Middle Blocker</td>
+                <td>6'2"</td>
+                <td><span class="badge badge--bench">Bench</span></td>
+              </tr>
+              <tr class="roster__row">
+                <td>9</td>
+                <td><!-- REPLACE --> Avery Banks</td>
+                <td>Opposite</td>
+                <td>6'1"</td>
+                <td><span class="badge badge--injury">Injured</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIMETABLE / SCHEDULE SECTION
+  ============================================================ -->
+  <section class="section timetable" id="timetable">
+    <div class="wave-divider wave-divider--top"></div>
+    <div class="container">
+      <span class="section-label">Schedule</span>
+      <h2 class="section-title section-title--center">Training & Fixtures</h2>
+
+      <div class="timetable__tabs">
+        <button class="tab-btn tab-btn--active" data-tab="training">Training</button>
+        <button class="tab-btn" data-tab="fixtures">Fixtures</button>
+        <button class="tab-btn" data-tab="results">Results</button>
+      </div>
+
+      <!-- TRAINING TAB -->
+      <div class="tab-content tab-content--active" id="tab-training">
+        <div class="schedule-grid reveal">
+          <!-- REPLACE: Update training sessions. Copy .schedule-card block to add more -->
+          <div class="schedule-card">
+            <div class="schedule-card__day">Mon</div>
+            <div class="schedule-card__details">
+              <span class="schedule-card__title">Senior Training</span>
+              <!-- REPLACE: time and venue -->
+              <span class="schedule-card__meta">18:00 – 20:00 · Whitehaven Sports Hall</span>
+            </div>
+            <div class="schedule-card__tag schedule-card__tag--senior">Senior</div>
+          </div>
+
+          <div class="schedule-card">
+            <div class="schedule-card__day">Wed</div>
+            <div class="schedule-card__details">
+              <span class="schedule-card__title">Youth Training</span>
+              <span class="schedule-card__meta"><!-- REPLACE --> 17:00 – 18:30 · Whitehaven Leisure Centre</span>
+            </div>
+            <div class="schedule-card__tag schedule-card__tag--youth">Youth</div>
+          </div>
+
+          <div class="schedule-card">
+            <div class="schedule-card__day">Thu</div>
+            <div class="schedule-card__details">
+              <span class="schedule-card__title">Open Session</span>
+              <span class="schedule-card__meta"><!-- REPLACE --> 19:00 – 20:30 · Whitehaven Sports Hall</span>
+            </div>
+            <div class="schedule-card__tag schedule-card__tag--open">Open</div>
+          </div>
+
+          <div class="schedule-card">
+            <div class="schedule-card__day">Sat</div>
+            <div class="schedule-card__details">
+              <span class="schedule-card__title">Beach Volleyball</span>
+              <span class="schedule-card__meta"><!-- REPLACE --> 10:00 – 12:00 · South Beach Courts</span>
+            </div>
+            <div class="schedule-card__tag schedule-card__tag--beach">Beach</div>
+          </div>
+        </div>
+
+        <!-- REPLACE: Link to your full training document (Google Docs, PDF, etc.) -->
+        <div class="doc-link reveal">
+          <a href="<!-- REPLACE: your-training-doc-url -->#" class="doc-link__btn" target="_blank" rel="noopener">
+            📄 Download Full Training Schedule (PDF)
+          </a>
+          <p class="doc-link__note">Last updated: <!-- REPLACE: date --> June 2026</p>
+        </div>
+      </div>
+
+      <!-- FIXTURES TAB -->
+      <div class="tab-content" id="tab-fixtures">
+        <div class="fixtures-list reveal">
+          <!-- REPLACE: Add upcoming fixtures. Copy .fixture block to add more -->
+          <div class="fixture fixture--upcoming">
+            <div class="fixture__date">
+              <span class="fixture__day"><!-- REPLACE -->14</span>
+              <span class="fixture__month">Jun</span>
+            </div>
+            <div class="fixture__teams">
+              <span class="fixture__home">Whitehaven Waves</span>
+              <span class="fixture__vs">vs</span>
+              <span class="fixture__away"><!-- REPLACE: opponent --> Coastal United</span>
+            </div>
+            <div class="fixture__meta">
+              <span><!-- REPLACE: venue --> Whitehaven Sports Hall</span>
+              <span><!-- REPLACE: time --> 15:00 KO</span>
+            </div>
+            <span class="fixture__badge fixture__badge--home">Home</span>
+          </div>
+
+          <div class="fixture fixture--upcoming">
+            <div class="fixture__date">
+              <span class="fixture__day"><!-- REPLACE -->21</span>
+              <span class="fixture__month">Jun</span>
+            </div>
+            <div class="fixture__teams">
+              <span class="fixture__home"><!-- REPLACE: opponent --> Bay FC</span>
+              <span class="fixture__vs">vs</span>
+              <span class="fixture__away">Whitehaven Waves</span>
+            </div>
+            <div class="fixture__meta">
+              <span><!-- REPLACE: venue --> Bay Sports Arena</span>
+              <span><!-- REPLACE: time --> 14:00 KO</span>
+            </div>
+            <span class="fixture__badge fixture__badge--away">Away</span>
+          </div>
+
+          <div class="fixture fixture--upcoming">
+            <div class="fixture__date">
+              <span class="fixture__day"><!-- REPLACE -->28</span>
+              <span class="fixture__month">Jun</span>
+            </div>
+            <div class="fixture__teams">
+              <span class="fixture__home">Whitehaven Waves</span>
+              <span class="fixture__vs">vs</span>
+              <span class="fixture__away"><!-- REPLACE --> North Spikers</span>
+            </div>
+            <div class="fixture__meta">
+              <span><!-- REPLACE: venue --> Whitehaven Sports Hall</span>
+              <span><!-- REPLACE: time --> 16:00 KO</span>
+            </div>
+            <span class="fixture__badge fixture__badge--home">Home</span>
+          </div>
+        </div>
+
+        <!-- REPLACE: Link to your fixtures document -->
+        <div class="doc-link reveal">
+          <a href="<!-- REPLACE: your-fixtures-doc-url -->#" class="doc-link__btn" target="_blank" rel="noopener">
+            📄 Full Season Fixture List
+          </a>
+        </div>
+      </div>
+
+      <!-- RESULTS TAB -->
+      <div class="tab-content" id="tab-results">
+        <div class="results-list reveal">
+          <!-- REPLACE: Add past results. Copy .result block to add more -->
+          <div class="result result--win">
+            <div class="result__date"><!-- REPLACE --> 07 Jun</div>
+            <div class="result__teams">
+              <span>Whitehaven Waves</span>
+              <span class="result__score">3 – 1</span>
+              <span><!-- REPLACE: opponent --> Redshore FC</span>
+            </div>
+            <span class="result__badge result__badge--win">W</span>
+          </div>
+
+          <div class="result result--win">
+            <div class="result__date"><!-- REPLACE --> 31 May</div>
+            <div class="result__teams">
+              <span><!-- REPLACE --> Harbour Hawks</span>
+              <span class="result__score">0 – 3</span>
+              <span>Whitehaven Waves</span>
+            </div>
+            <span class="result__badge result__badge--win">W</span>
+          </div>
+
+          <div class="result result--loss">
+            <div class="result__date"><!-- REPLACE --> 24 May</div>
+            <div class="result__teams">
+              <span>Whitehaven Waves</span>
+              <span class="result__score">1 – 3</span>
+              <span><!-- REPLACE --> Summit Volley Club</span>
+            </div>
+            <span class="result__badge result__badge--loss">L</span>
+          </div>
+
+          <div class="result result--win">
+            <div class="result__date"><!-- REPLACE --> 17 May</div>
+            <div class="result__teams">
+              <span>Whitehaven Waves</span>
+              <span class="result__score">3 – 0</span>
+              <span><!-- REPLACE --> Driftwood VBC</span>
+            </div>
+            <span class="result__badge result__badge--win">W</span>
+          </div>
+        </div>
+
+        <!-- REPLACE: Link to your full results document -->
+        <div class="doc-link reveal">
+          <a href="<!-- REPLACE: your-results-doc-url -->#" class="doc-link__btn" target="_blank" rel="noopener">
+            📊 View Full Season Statistics
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--bottom"></div>
+  </section>
+
+  <!-- ============================================================
+       HIGHLIGHT VIDEOS SECTION
+  ============================================================ -->
+  <section class="section highlights" id="highlights">
+    <div class="container">
+      <span class="section-label">On the Court</span>
+      <h2 class="section-title section-title--center">Highlight Reel</h2>
+
+      <div class="highlights__grid">
+        <!-- REPLACE: Update video embed URLs. 
+             For YouTube: https://www.youtube.com/embed/VIDEO_ID
+             For Vimeo: https://player.vimeo.com/video/VIDEO_ID
+             You can also link to Instagram reels below -->
+
+        <div class="video-card reveal">
+          <div class="video-card__embed">
+            <!-- REPLACE: Replace the iframe src with your actual YouTube/Vimeo embed URL -->
+            <iframe
+              src="https://www.youtube.com/embed/<!-- REPLACE: VIDEO_ID -->dQw4w9WgXcQ"
+              title="<!-- REPLACE: Video title --> Season Highlights 2026"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="video-card__meta">
+            <span class="video-card__tag"><!-- REPLACE: tag --> Season Highlights</span>
+            <h3 class="video-card__title"><!-- REPLACE --> Best Spikes of 2026</h3>
+            <p class="video-card__desc"><!-- REPLACE --> Relive the season's most electrifying moments from the Waves.</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal reveal--delay-1">
+          <div class="video-card__embed">
+            <!-- REPLACE: Next highlight video -->
+            <iframe
+              src="https://www.youtube.com/embed/<!-- REPLACE: VIDEO_ID -->dQw4w9WgXcQ"
+              title="<!-- REPLACE --> Championship Match"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="video-card__meta">
+            <span class="video-card__tag"><!-- REPLACE --> Match Recap</span>
+            <h3 class="video-card__title"><!-- REPLACE --> Waves vs Coastal United</h3>
+            <p class="video-card__desc"><!-- REPLACE --> Full match recap from our biggest win of the season.</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal reveal--delay-2">
+          <div class="video-card__embed">
+            <!-- REPLACE: Third highlight video -->
+            <iframe
+              src="https://www.youtube.com/embed/<!-- REPLACE: VIDEO_ID -->dQw4w9WgXcQ"
+              title="<!-- REPLACE --> Training Day"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="video-card__meta">
+            <span class="video-card__tag"><!-- REPLACE --> Behind the Scenes</span>
+            <h3 class="video-card__title"><!-- REPLACE --> Inside Training Camp</h3>
+            <p class="video-card__desc"><!-- REPLACE --> A look inside a typical week of training with the Waves squad.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social media links row -->
+      <div class="social-strip reveal">
+        <p>More videos on our socials →</p>
+        <!-- REPLACE: Update all social media URLs below -->
+        <a href="https://www.instagram.com/whitehavenwaves/" class="social-btn social-btn--instagram" target="_blank" rel="noopener">
+          Instagram
+        </a>
+        <a href="<!-- REPLACE: your TikTok URL -->#" class="social-btn social-btn--tiktok" target="_blank" rel="noopener">
+          TikTok
+        </a>
+        <a href="<!-- REPLACE: your YouTube channel URL -->#" class="social-btn social-btn--youtube" target="_blank" rel="noopener">
+          YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TEAM / PLAYERS SECTION
+  ============================================================ -->
+  <section class="section team" id="team">
+    <div class="wave-divider wave-divider--top"></div>
+    <div class="container">
+      <span class="section-label">The Squad</span>
+      <h2 class="section-title section-title--center">Meet the Waves</h2>
+
+      <div class="team__grid">
+        <!-- REPLACE: Add a .player-card block for each player.
+             Update photo path, name, number, position, and bio for each. -->
+
+        <div class="player-card reveal">
+          <!-- REPLACE: player photo path -->
+          <div class="player-card__photo" style="background-image: url('assets/player-1.jpg')">
+            <span class="player-card__number">#1</span>
+          </div>
+          <div class="player-card__info">
+            <h3 class="player-card__name"><!-- REPLACE --> Alex Rivera</h3>
+            <span class="player-card__pos">Setter</span>
+            <p class="player-card__bio"><!-- REPLACE --> Dynamic setter with elite court vision and over 5 years with the Waves.</p>
+          </div>
+        </div>
+
+        <div class="player-card reveal reveal--delay-1">
+          <div class="player-card__photo" style="background-image: url('assets/player-2.jpg')">
+            <span class="player-card__number">#2</span>
+          </div>
+          <div class="player-card__info">
+            <h3 class="player-card__name"><!-- REPLACE --> Morgan Chen</h3>
+            <span class="player-card__pos">Right Side Hitter</span>
+            <p class="player-card__bio"><!-- REPLACE --> Powerful hitter whose attacks are as relentless as the tide.</p>
+          </div>
+        </div>
+
+        <div class="player-card reveal reveal--delay-2">
+          <div class="player-card__photo" style="background-image: url('assets/player-3.jpg')">
+            <span class="player-card__number">#3</span>
+          </div>
+          <div class="player-card__info">
+            <h3 class="player-card__name"><!-- REPLACE --> Casey Walsh</h3>
+            <span class="player-card__pos">Middle Blocker</span>
+            <p class="player-card__bio"><!-- REPLACE --> A wall at the net — Casey's blocks have turned the tide of many games.</p>
+          </div>
+        </div>
+
+        <div class="player-card reveal">
+          <div class="player-card__photo" style="background-image: url('assets/player-4.jpg')">
+            <span class="player-card__number">#4</span>
+          </div>
+          <div class="player-card__info">
+            <h3 class="player-card__name"><!-- REPLACE --> Riley Storm</h3>
+            <span class="player-card__pos">Outside Hitter</span>
+            <p class="player-card__bio"><!-- REPLACE --> Electric attacker with a serve that rivals a rip-tide.</p>
+          </div>
+        </div>
+
+        <div class="player-card reveal reveal--delay-1">
+          <div class="player-card__photo" style="background-image: url('assets/player-5.jpg')">
+            <span class="player-card__number">#5</span>
+          </div>
+          <div class="player-card__info">
+            <h3 class="player-card__name"><!-- REPLACE --> Sam Okafor</h3>
+            <span class="player-card__pos">Outside Hitter</span>
+            <p class="player-card__bio"><!-- REPLACE --> Hard-working, consistent, and always the first to hit the sand in defence.</p>
+          </div>
+        </div>
+
+        <div class="player-card reveal reveal--delay-2">
+          <div class="player-card__photo" style="background-image: url('assets/player-6.jpg')">
+            <span class="player-card__number">#6</span>
+          </div>
+          <div class="player-card__info">
+            <h3 class="player-card__name"><!-- REPLACE --> Jordan Lee</h3>
+            <span class="player-card__pos">Libero</span>
+            <p class="player-card__bio"><!-- REPLACE --> The ultimate defensive anchor — no ball hits the floor on Jordan's watch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--bottom"></div>
+  </section>
+
+  <!-- ============================================================
+       STAFF SECTION
+  ============================================================ -->
+  <section class="section staff" id="staff">
+    <div class="container">
+      <span class="section-label">Behind the Team</span>
+      <h2 class="section-title section-title--center">Our Staff</h2>
+
+      <div class="staff__grid">
+        <!-- REPLACE: Add a .staff-card block for each staff member -->
+
+        <div class="staff-card reveal">
+          <!-- REPLACE: staff photo path -->
+          <div class="staff-card__photo" style="background-image: url('assets/staff-coach.jpg')"></div>
+          <div class="staff-card__info">
+            <h3 class="staff-card__name"><!-- REPLACE --> Chris Hartley</h3>
+            <span class="staff-card__role">Head Coach</span>
+            <p class="staff-card__bio"><!-- REPLACE --> 12 years coaching experience at regional and national level. Former professional player turned passionate mentor.</p>
+            <!-- REPLACE: Add staff email or contact link -->
+            <a href="mailto:<!-- REPLACE: email -->coach@whitehavenwaves.com" class="staff-card__contact">
+              📧 Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <div class="staff-card reveal reveal--delay-1">
+          <div class="staff-card__photo" style="background-image: url('assets/staff-asst.jpg')"></div>
+          <div class="staff-card__info">
+            <h3 class="staff-card__name"><!-- REPLACE --> Dana Murphy</h3>
+            <span class="staff-card__role">Assistant Coach</span>
+            <p class="staff-card__bio"><!-- REPLACE --> Specialises in serving and defensive systems. Dana brings energy and tactical depth to every training session.</p>
+            <a href="mailto:<!-- REPLACE -->asst@whitehavenwaves.com" class="staff-card__contact">
+              📧 Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <div class="staff-card reveal reveal--delay-2">
+          <div class="staff-card__photo" style="background-image: url('assets/staff-physio.jpg')"></div>
+          <div class="staff-card__info">
+            <h3 class="staff-card__name"><!-- REPLACE --> Priya Kapoor</h3>
+            <span class="staff-card__role">Club Physiotherapist</span>
+            <p class="staff-card__bio"><!-- REPLACE --> Keeping the Waves injury-free. Priya handles player welfare, recovery programmes, and match-day support.</p>
+            <a href="mailto:<!-- REPLACE -->physio@whitehavenwaves.com" class="staff-card__contact">
+              📧 Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <div class="staff-card reveal">
+          <div class="staff-card__photo" style="background-image: url('assets/staff-manager.jpg')"></div>
+          <div class="staff-card__info">
+            <h3 class="staff-card__name"><!-- REPLACE --> Tom Brennan</h3>
+            <span class="staff-card__role">Club Manager</span>
+            <p class="staff-card__bio"><!-- REPLACE --> The organisational backbone of the Waves. Tom handles fixtures, registrations, and everything in between.</p>
+            <a href="mailto:<!-- REPLACE -->manager@whitehavenwaves.com" class="staff-card__contact">
+              📧 Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
+  <section class="section contact" id="contact">
+    <div class="wave-divider wave-divider--top"></div>
+    <div class="container">
+      <span class="section-label">Get Involved</span>
+      <h2 class="section-title section-title--center">Contact Us</h2>
+
+      <div class="contact__grid">
+
+        <div class="contact__info reveal">
+          <div class="contact-block">
+            <span class="contact-block__icon">📍</span>
+            <div>
+              <h4>Where to Find Us</h4>
+              <!-- REPLACE: Your venue address -->
+              <p>Whitehaven Sports Hall<br/>Harbour Road, Whitehaven<br/>Cumbria, CA28 7TY</p>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <span class="contact-block__icon">📧</span>
+            <div>
+              <h4>Email</h4>
+              <!-- REPLACE: Your main email -->
+              <a href="mailto:info@whitehavenwaves.com">info@whitehavenwaves.com</a>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <span class="contact-block__icon">📞</span>
+            <div>
+              <h4>Phone</h4>
+              <!-- REPLACE: Your phone number -->
+              <a href="tel:+441900000000">+44 1900 000 000</a>
+            </div>
+          </div>
+
+          <div class="contact__social">
+            <h4>Follow the Waves</h4>
+            <div class="social-links">
+              <!-- REPLACE: Update all social URLs -->
+              <a href="https://www.instagram.com/whitehavenwaves/" class="social-link social-link--ig" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="<!-- REPLACE: TikTok URL -->#" class="social-link social-link--tt" target="_blank" rel="noopener" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+              </a>
+              <a href="<!-- REPLACE: YouTube URL -->#" class="social-link social-link--yt" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact__form reveal reveal--right">
+          <form class="form" id="contactForm" novalidate>
+            <div class="form__group">
+              <label class="form__label" for="name">Your Name</label>
+              <input class="form__input" type="text" id="name" name="name" placeholder="<!-- REPLACE: placeholder --> Jane Smith" required />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email">Email Address</label>
+              <input class="form__input" type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="subject">Subject</label>
+              <select class="form__input" id="subject" name="subject">
+                <!-- REPLACE: Customise dropdown options -->
+                <option value="">Select a topic…</option>
+                <option value="join">Joining the Club</option>
+                <option value="training">Training Enquiry</option>
+                <option value="sponsorship">Sponsorship</option>
+                <option value="press">Press / Media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="message">Message</label>
+              <textarea class="form__input form__textarea" id="message" name="message" rows="5" placeholder="<!-- REPLACE: placeholder --> Tell us what's on your mind…" required></textarea>
+            </div>
+            <!-- REPLACE: Update the form action to your form handler (e.g. Formspree, Netlify Forms, etc.) -->
+            <button type="submit" class="btn btn--primary btn--full">Send Message 🌊</button>
+            <p class="form__note" id="formNote"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--bottom"></div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer__waves">
+      <div class="wave wave--footer-1"></div>
+      <div class="wave wave--footer-2"></div>
+    </div>
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <!-- REPLACE: Your logo again if needed -->
+        <span class="footer__logo">Whitehaven<em>Waves</em></span>
+        <!-- REPLACE: Your tagline -->
+        <p>Ride the wave. Spike the game.</p>
+      </div>
+
+      <div class="footer__links">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#lineup">Line-Up</a></li>
+          <li><a href="#timetable">Timetable</a></li>
+          <li><a href="#highlights">Highlights</a></li>
+          <li><a href="#staff">Staff</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__links">
+        <h4>Resources</h4>
+        <ul>
+          <!-- REPLACE: Link to your backend docs -->
+          <li><a href="<!-- REPLACE -->#" target="_blank">Training Schedule (PDF)</a></li>
+          <li><a href="<!-- REPLACE -->#" target="_blank">Season Fixtures</a></li>
+          <li><a href="<!-- REPLACE -->#" target="_blank">Club Handbook</a></li>
+          <li><a href="<!-- REPLACE -->#" target="_blank">Safeguarding Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__social">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="https://www.instagram.com/whitehavenwaves/" class="social-link social-link--ig" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="<!-- REPLACE -->#" class="social-link social-link--tt" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="<!-- REPLACE -->#" class="social-link social-link--yt" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>
+        <!-- REPLACE: Update year and any legal links you need -->
+        © 2026 Whitehaven Waves Volleyball Club. All rights reserved.
+      </p>
+      <p>
+        <a href="<!-- REPLACE -->#">Privacy Policy</a> ·
+        <a href="<!-- REPLACE -->#">Cookie Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

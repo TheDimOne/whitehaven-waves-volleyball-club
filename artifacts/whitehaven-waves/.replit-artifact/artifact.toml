@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Whitehaven Waves Volleyball"
+version = "1.0.0"
+id = "artifacts/whitehaven-waves"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23357
+
+[services.development]
+run = "pnpm --filter @workspace/whitehaven-waves run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/whitehaven-waves", "run", "build" ]
+publicDir = "artifacts/whitehaven-waves/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23357"
+BASE_PATH = "/"
