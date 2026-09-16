@@ -32,7 +32,7 @@ export default function Contact() {
               <span className="contact-block__icon">📍</span>
               <div>
                 <h4>Where to Find Us</h4>
-                <p>Whitehaven Sports Hall<br />Harbour Road, Whitehaven<br />Cumbria, CA28 7TY</p>
+                <p>St Bees Sports Hall<br />Wood Lane<br />Cumbria, CA27 0DS</p>
               </div>
             </div>
             <div className="contact-block">
