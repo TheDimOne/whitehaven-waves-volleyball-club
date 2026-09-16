@@ -2,11 +2,19 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useCountUp } from "../hooks/useCountUp";
 import { getYearsActive } from "../lib/anniversary";
 
-function StatCounter({ target, label }: { target: number; label: string }) {
+function StatCounter({
+  target,
+  label,
+  displayValue,
+}: {
+  target: number;
+  label: string;
+  displayValue?: string;
+}) {
   const { ref, value } = useCountUp(target);
   return (
     <div className="stat">
-      <span className="stat__number" ref={ref}>{value}</span>
+      <span className="stat__number" ref={ref}>{displayValue ?? value}</span>
       <span className="stat__label">{label}</span>
     </div>
   );
@@ -50,7 +58,7 @@ export default function About() {
             <div className="about__stats">
               <StatCounter key={yearsActive} target={yearsActive} label="Years Active" />
               <StatCounter target={14} label="Squad Members" />
-              <StatCounter target={3} label="Trophies Won" />
+              <StatCounter target={0} displayValue="∞" label="Memories Made" />
             </div>
           </div>
 
