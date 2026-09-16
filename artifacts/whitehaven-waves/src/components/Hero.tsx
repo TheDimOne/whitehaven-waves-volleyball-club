@@ -74,7 +74,7 @@ export default function Hero() {
       <div className="hero__overlay" />
 
       <div className="hero__content">
-        <p className="hero__eyebrow">Est. 2020</p>
+        <p className="hero__eyebrow">EST. 2023</p>
         <h1 className="hero__title">
           <span className="hero__title-line">Whitehaven</span>
           <span className="hero__title-wave">Waves</span>
