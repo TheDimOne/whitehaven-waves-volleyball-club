@@ -270,8 +270,6 @@ export default function Lineup() {
                   <th>#</th>
                   <th>Name</th>
                   <th>Position</th>
-                  <th>Height</th>
-                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -289,12 +287,6 @@ export default function Lineup() {
                     <td>{player.num}</td>
                     <td>{player.name}</td>
                     <td>{player.pos}</td>
-                    <td>{player.height}</td>
-                    <td>
-                      <span className={`badge badge--${player.status}`}>
-                        {player.status === "active" ? "Active" : player.status === "bench" ? "Bench" : "Injured"}
-                      </span>
-                    </td>
                   </tr>
                 ))}
               </tbody>
