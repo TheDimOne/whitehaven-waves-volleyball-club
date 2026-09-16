@@ -1,14 +1,16 @@
 import { useEffect, useRef } from "react";
 
 const tickerItems = [
-  "⚡ Latest: Waves 3 – 1 Redshore FC",
-  "🏆 League Position: 2nd",
-  "📅 Next Match: vs. Coastal United – Sat 14 Jun",
-  "🌊 Season Record: W 8 · L 2 · D 1",
-  "⚡ Latest: Waves 3 – 1 Redshore FC",
-  "🏆 League Position: 2nd",
-  "📅 Next Match: vs. Coastal United – Sat 14 Jun",
-  "🌊 Season Record: W 8 · L 2 · D 1",
+  "Follow our socials",
+  "Contact to Register",
+  "Stay Wavy",
+  "All ability levels welcome",
+  "Wednesday 19:30 - 21:30",
+  "Follow our socials",
+  "Contact to Register",
+  "Stay Wavy",
+  "All ability levels welcome",
+  "Wednesday 19:30 - 21:30",
 ];
 
 export default function Hero() {
