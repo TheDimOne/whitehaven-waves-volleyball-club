@@ -44,11 +44,7 @@ export default function About() {
             <span className="section-label">Who We Are</span>
             <h2 className="section-title">Volleyball is our<br />heartbeat</h2>
             <p className="about__body">Founded in the coastal town of Whitehaven, the Waves are more than a volleyball team — we're a family forged by the tides. From early days to aged waves, our players bring the relentless energy of the ocean to every set, spike, and serve.</p>
-            <p className="about__body">
-              We believe in building athletes who are fearless on the court and grounded off it.
-              Training hard, playing harder, and always showing up for each other — that's the
-              Whitehaven way.
-            </p>
+            <p className="about__body">We believe in building athletes who are fearless on the court and grounded off it. Training hard, playing harder, and always showing up for each other — that's the Waves way.</p>
             <div className="about__stats">
               <StatCounter target={6} label="Years Active" />
               <StatCounter target={14} label="Squad Members" />
