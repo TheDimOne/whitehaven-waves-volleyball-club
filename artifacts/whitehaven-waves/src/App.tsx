@@ -7,7 +7,6 @@ import About from "./components/About";
 import Lineup from "./components/Lineup";
 import Timetable from "./components/Timetable";
 import Highlights from "./components/Highlights";
-import Team from "./components/Team";
 import Staff from "./components/Staff";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -45,7 +44,6 @@ export default function App() {
         <Lineup />
         <Timetable />
         <Highlights />
-        <Team />
         <Staff />
         <Contact />
       </main>

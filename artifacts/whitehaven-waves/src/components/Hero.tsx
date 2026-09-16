@@ -81,7 +81,7 @@ export default function Hero() {
         </h1>
         <p className="hero__tagline">Ride the wave. Spike the game.</p>
         <div className="hero__cta-group">
-          <button className="btn btn--primary" onClick={() => scrollTo("team")}>Meet the Team</button>
+          <button className="btn btn--primary" onClick={() => scrollTo("lineup")}>See the Line-Up</button>
           <button className="btn btn--ghost" onClick={() => scrollTo("highlights")}>Watch Highlights</button>
         </div>
       </div>
