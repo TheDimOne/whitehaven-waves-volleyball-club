@@ -32,8 +32,23 @@ const galleryColors = [
   "linear-gradient(135deg,#162040,#0f3460)",
 ];
 
+const GROUP_START_DATE = new Date(2023, 4, 5);
+
+function getYearsActive(today = new Date()) {
+  let years = today.getFullYear() - GROUP_START_DATE.getFullYear();
+  const anniversary = new Date(
+    today.getFullYear(),
+    GROUP_START_DATE.getMonth(),
+    GROUP_START_DATE.getDate(),
+  );
+
+  if (today < anniversary) years -= 1;
+  return Math.max(0, years);
+}
+
 export default function About() {
   const ref = useScrollReveal();
+  const yearsActive = getYearsActive();
 
   return (
     <section className="section about" id="about" ref={ref}>
@@ -46,7 +61,7 @@ export default function About() {
             <p className="about__body">Founded in the coastal town of Whitehaven, the Waves are more than a volleyball team — we're a family forged by the tides. From early days to aged waves, our players bring the relentless energy of the ocean to every set, spike, and serve.</p>
             <p className="about__body">We believe in building athletes who are fearless on the court and grounded off it. Training hard, playing harder, and always showing up for each other — that's the Waves way.</p>
             <div className="about__stats">
-              <StatCounter target={6} label="Years Active" />
+              <StatCounter target={yearsActive} label="Years Active" />
               <StatCounter target={14} label="Squad Members" />
               <StatCounter target={3} label="Trophies Won" />
             </div>
