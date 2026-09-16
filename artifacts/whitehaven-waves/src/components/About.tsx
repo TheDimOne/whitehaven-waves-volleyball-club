@@ -1,5 +1,6 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useCountUp } from "../hooks/useCountUp";
+import { getYearsActive } from "../lib/anniversary";
 
 function StatCounter({ target, label }: { target: number; label: string }) {
   const { ref, value } = useCountUp(target);
@@ -31,20 +32,6 @@ const galleryColors = [
   "linear-gradient(135deg,#0f3460,#0a4f3a)",
   "linear-gradient(135deg,#162040,#0f3460)",
 ];
-
-const GROUP_START_DATE = new Date(2023, 4, 5);
-
-function getYearsActive(today = new Date()) {
-  let years = today.getFullYear() - GROUP_START_DATE.getFullYear();
-  const anniversary = new Date(
-    today.getFullYear(),
-    GROUP_START_DATE.getMonth(),
-    GROUP_START_DATE.getDate(),
-  );
-
-  if (today < anniversary) years -= 1;
-  return Math.max(0, years);
-}
 
 export default function About() {
   const ref = useScrollReveal();

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./index.css";
+import { celebrateAnniversary, isAnniversary } from "./lib/anniversary";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -23,6 +24,15 @@ export default function App() {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("ww-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    const demoRequested =
+      new URLSearchParams(window.location.search).get("anniversary-demo") === "1";
+    if (!demoRequested && !isAnniversary()) return;
+
+    const cleanup = celebrateAnniversary({ force: demoRequested });
+    return cleanup;
+  }, []);
 
   const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
 
