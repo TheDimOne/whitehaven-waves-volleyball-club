@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: lineup
+    description: Whitehaven Waves lineup data
 paths:
   /healthz:
     get:
@@ -24,6 +26,30 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /lineup-workbook:
+    get:
+      operationId: getLineupWorkbook
+      tags: [lineup]
+      summary: Download the current lineup workbook
+      description: Proxies the public lineup workbook for the Whitehaven Waves website.
+      responses:
+        "200":
+          description: Current lineup workbook
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        "502":
+          description: Workbook source unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required: [error]
 components:
   schemas:
     HealthStatus:

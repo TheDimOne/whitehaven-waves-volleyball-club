@@ -719,14 +719,17 @@ ul { list-style: none; }
 }
 
 .roster { margin-top: var(--space-md); }
+.roster__heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
 .roster__title {
   font-family: var(--font-condensed);
   font-size: 1.1rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
+.roster__source { font-family: var(--font-condensed); font-size: 0.8rem; letter-spacing: 0.06em; color: var(--ww-accent); text-decoration: none; text-align: right; }
+.roster__source:hover { color: var(--c-sand); text-decoration: underline; }
 .roster__table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--ww-border); }
 .roster__table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
 .roster__table thead {
@@ -743,6 +746,10 @@ ul { list-style: none; }
 .roster__row--starter td:first-child { color: var(--ww-accent); font-weight: 700; }
 .roster__row--highlighted { background: rgba(251,191,36,0.1) !important; outline: 1.5px solid rgba(251,191,36,0.4); outline-offset: -1px; }
 .roster__row--highlighted td:first-child { color: var(--c-sand) !important; }
+@media (max-width: 600px) {
+  .roster__heading { align-items: flex-start; flex-direction: column; gap: 0.35rem; }
+  .roster__source { text-align: left; }
+}
 
 /* ============================================================
    TIMETABLE

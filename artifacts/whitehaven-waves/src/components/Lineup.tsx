@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import * as XLSX from "xlsx";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const frontRow = [
-  { pos: 4, number: "#4", name: "Riley Storm", role: "Outside Hitter" },
-  { pos: 3, number: "#3", name: "Casey Walsh", role: "Middle Blocker" },
-  { pos: 2, number: "#2", name: "Morgan Chen", role: "Right Side Hitter" },
-];
+const WORKBOOK_URL =
+  "https://1drv.ms/x/c/48681ba6434674fe/IQCCOwMsOHqTRI5eX0wO_vP2ASvzMv8FqYsmANDBEQ51bIQ?e=oLCFUt&nav=MTVfe0Q1NkUwNjc3LTEyQTgtNDI4OS1BODg2LUJEM0ZBMkRGRTVGM30";
+const WORKBOOK_API_PATH = "/api/lineup-workbook";
 
-const backRow = [
-  { pos: 5, number: "#5", name: "Sam Okafor", role: "Outside Hitter" },
-  { pos: 6, number: "#6", name: "Jordan Lee", role: "Libero" },
-  { pos: 1, number: "#1", name: "Alex Rivera", role: "Setter" },
-];
+type RosterStatus = "active" | "bench" | "injury";
 
-const roster = [
+interface RosterPlayer {
+  num: number;
+  name: string;
+  pos: string;
+  height: string;
+  status: RosterStatus;
+  starter: boolean;
+}
+
+interface CourtPlayer extends Omit<RosterPlayer, "pos"> {
+  pos: number;
+  number: string;
+  role: string;
+}
+
+const fallbackRoster: RosterPlayer[] = [
   { num: 1, name: "Alex Rivera", pos: "Setter", height: "5'10\"", status: "active", starter: true },
   { num: 2, name: "Morgan Chen", pos: "Right Side Hitter", height: "6'1\"", status: "active", starter: true },
   { num: 3, name: "Casey Walsh", pos: "Middle Blocker", height: "6'3\"", status: "active", starter: true },
@@ -24,6 +34,67 @@ const roster = [
   { num: 8, name: "Drew Summers", pos: "Middle Blocker", height: "6'2\"", status: "bench", starter: false },
   { num: 9, name: "Avery Banks", pos: "Opposite", height: "6'1\"", status: "injury", starter: false },
 ];
+
+function normalizeHeader(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function getCell(row: Record<string, unknown>, aliases: string[]) {
+  const key = Object.keys(row).find((header) =>
+    aliases.includes(normalizeHeader(header)),
+  );
+  return key ? row[key] : "";
+}
+
+function parseNumber(value: unknown, fallback: number) {
+  const number = Number(String(value ?? "").replace(/[^0-9]/g, ""));
+  return Number.isFinite(number) && number > 0 ? number : fallback;
+}
+
+function parseStatus(value: unknown): Pick<RosterPlayer, "status" | "starter"> {
+  const normalized = String(value ?? "").trim().toLowerCase();
+
+  if (["injured", "injury"].includes(normalized)) {
+    return { status: "injury", starter: false };
+  }
+
+  if (["active", "yes", "y", "true", "1", "starter", "starting"].includes(normalized)) {
+    return { status: "active", starter: true };
+  }
+
+  return { status: "bench", starter: false };
+}
+
+function parseWorkbook(buffer: ArrayBuffer): RosterPlayer[] {
+  const workbook = XLSX.read(buffer, { type: "array" });
+  const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+  if (!firstSheet) throw new Error("The workbook does not contain a sheet.");
+
+  const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(firstSheet, {
+    defval: "",
+    raw: false,
+  });
+
+  const parsed = rows.flatMap((row, index) => {
+    const name = String(getCell(row, ["name"]) ?? "").trim();
+    if (!name) return [];
+
+    const status = parseStatus(getCell(row, ["active"]));
+    return [{
+      num: parseNumber(getCell(row, ["number", "no", "playernumber"]), index + 1),
+      name,
+      pos: String(getCell(row, ["position", "positon", "pos"]) ?? "").trim() || "Player",
+      height: String(getCell(row, ["height"]) ?? "").trim() || "—",
+      ...status,
+    }];
+  });
+
+  if (!parsed.length) {
+    throw new Error("No player rows were found in the workbook.");
+  }
+
+  return parsed;
+}
 
 interface PlayerPinProps {
   pos: number;
@@ -54,6 +125,59 @@ function PlayerPin({ pos, number, name, role, isSelected, onHover }: PlayerPinPr
 export default function Lineup() {
   const ref = useScrollReveal();
   const [hovered, setHovered] = useState<number | null>(null);
+  const [roster, setRoster] = useState<RosterPlayer[]>(fallbackRoster);
+  const [sourceStatus, setSourceStatus] = useState<"loading" | "live" | "fallback">("loading");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadRoster() {
+      try {
+        const response = await fetch(WORKBOOK_API_PATH, {
+          signal: controller.signal,
+          cache: "no-store",
+        });
+        if (!response.ok) throw new Error(`Workbook request failed: ${response.status}`);
+        const players = parseWorkbook(await response.arrayBuffer());
+        setRoster(players);
+        setSourceStatus("live");
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setSourceStatus("fallback");
+      }
+    }
+
+    void loadRoster();
+    return () => controller.abort();
+  }, []);
+
+  const { frontRow, backRow } = useMemo(() => {
+    const starters = roster
+      .filter((player) => player.starter)
+      .sort((a, b) => a.num - b.num)
+      .slice(0, 6);
+    const playersByNumber = new Map(starters.map((player) => [player.num, player]));
+    const fallbackOrder = starters.map((player) => player.num);
+
+    const toCourtPlayers = (numbers: number[]): CourtPlayer[] => {
+      const players = numbers.map((number) => playersByNumber.get(number));
+      const orderedPlayers = players.every(Boolean)
+        ? players
+        : fallbackOrder.map((number) => playersByNumber.get(number));
+
+      return orderedPlayers.filter((player): player is RosterPlayer => Boolean(player)).map((player) => ({
+        ...player,
+        pos: player.num,
+        number: `#${player.num}`,
+        role: player.pos,
+      }));
+    };
+
+    return {
+      frontRow: toCourtPlayers([4, 3, 2]),
+      backRow: toCourtPlayers([5, 6, 1]),
+    };
+  }, [roster]);
 
   const hoveredPlayer = hovered !== null
     ? [...frontRow, ...backRow].find(p => p.pos === hovered)
@@ -124,7 +248,21 @@ export default function Lineup() {
         </div>
 
         <div className="roster reveal">
-          <h3 className="roster__title">Full Squad Roster</h3>
+          <div className="roster__heading">
+            <h3 className="roster__title">Full Squad Roster</h3>
+            <a
+              className="roster__source"
+              href={WORKBOOK_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {sourceStatus === "loading"
+                ? "Updating from workbook…"
+                : sourceStatus === "live"
+                  ? "Live workbook ↗"
+                  : "Workbook unavailable · Showing saved roster"}
+            </a>
+          </div>
           <div className="roster__table-wrap">
             <table className="roster__table">
               <thead>
