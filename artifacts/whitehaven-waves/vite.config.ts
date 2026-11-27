@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import fs from "node:fs";
 
 const port = Number(process.env.PORT || 5173);
 const basePath = process.env.BASE_PATH || "/";
@@ -11,6 +12,15 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    {
+      name: "whitehaven-home-route",
+      closeBundle() {
+        const outputDir = path.resolve(import.meta.dirname, "dist/public");
+        const homeDir = path.join(outputDir, "home");
+        fs.mkdirSync(homeDir, { recursive: true });
+        fs.copyFileSync(path.join(outputDir, "index.html"), path.join(homeDir, "index.html"));
+      },
+    },
   ],
   resolve: {
     alias: {
