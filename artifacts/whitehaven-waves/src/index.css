@@ -1574,5 +1574,5 @@ ul { list-style: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ticker__track { animation: none; }
-  .hero__ticker { overflow-x: auto; }
+  .hero__ticker { overflow: hidden; }
 }
