@@ -149,11 +149,11 @@ export default function SphealCompanion() {
   return (
     <div
       className={`spheal-companion ${visible ? "is-visible" : ""} spheal-companion--${mood}`}
-      style={{ left: point.x, top: point.y, ["--spheal-facing" as string]: facing }}
+      style={{ left: point.x, top: point.y }}
       aria-hidden="true"
     >
       {mood === "move" && <span className="spheal-aurora" />}
-      <button className="spheal-companion__button" type="button" tabIndex={-1} onClick={interact} aria-label="Spheal, the sea-rolling Pokémon">
+      <button className="spheal-companion__button" type="button" tabIndex={-1} onClick={interact} aria-label="Spheal, the sea-rolling Pokémon" style={{ transform: `scaleX(${facing})` }}>
         <svg className="spheal-art" viewBox="0 0 120 104" role="presentation">
           <defs>
             <radialGradient id="sphealBody" cx="38%" cy="28%" r="72%">
