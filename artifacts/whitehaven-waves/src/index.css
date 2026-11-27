@@ -1238,3 +1238,78 @@ ul { list-style: none; }
   .staff__grid { grid-template-columns: 1fr; }
   .staff-card:nth-child(7) { grid-column: auto; width: 100%; }
 }
+
+
+/* ============================================================
+   DESKTOP VOLLEYBALL SCROLLBAR
+   ============================================================ */
+@media (min-width: 769px) {
+  html {
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+  .scroll-volleyball {
+    position: fixed;
+    z-index: 998;
+    top: 9vh;
+    right: 15px;
+    bottom: 9vh;
+    width: 30px;
+    cursor: grab;
+    touch-action: none;
+    outline: none;
+  }
+  .scroll-volleyball:active { cursor: grabbing; }
+  .scroll-volleyball:focus-visible {
+    border-radius: 999px;
+    box-shadow: 0 0 0 2px var(--ww-accent);
+  }
+  .scroll-volleyball__track,
+  .scroll-volleyball__progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    border-radius: 999px;
+    transform: translateX(-50%);
+  }
+  .scroll-volleyball__track {
+    background: color-mix(in srgb, var(--ww-accent) 22%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ww-accent) 35%, transparent);
+  }
+  .scroll-volleyball__progress {
+    bottom: auto;
+    background: linear-gradient(to bottom, var(--c-wave-bright), var(--c-cyan));
+    box-shadow: 0 0 9px rgba(82, 165, 216, 0.55);
+  }
+  .scroll-volleyball__ball {
+    position: absolute;
+    left: 50%;
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+    pointer-events: none;
+  }
+  .scroll-volleyball__ball svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: volleyballRoll 1.8s linear infinite;
+  }
+  @keyframes volleyballRoll {
+    to { transform: rotate(360deg); }
+  }
+}
+@media (max-width: 768px) {
+  .scroll-volleyball { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-volleyball__ball svg { animation: none; }
+}
