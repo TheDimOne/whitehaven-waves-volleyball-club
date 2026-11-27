@@ -1399,3 +1399,138 @@ ul { list-style: none; }
   height: 21px;
   object-fit: contain;
 }
+
+
+/* First-visit Waves Hideout welcome */
+.hideout-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(2, 15, 34, 0.76);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  animation: hideoutOverlayIn 0.28s ease-out both;
+}
+.hideout-card {
+  position: relative;
+  width: min(100%, 560px);
+  max-height: min(90vh, 820px);
+  overflow-y: auto;
+  padding: 2.25rem clamp(1.25rem, 5vw, 2.75rem) 1.6rem;
+  border: 1px solid rgba(140, 216, 235, 0.48);
+  border-radius: 24px;
+  background: linear-gradient(155deg, #104b72 0%, #092d50 58%, #071f3c 100%);
+  color: #f7fbff;
+  text-align: center;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.48), inset 0 1px rgba(255,255,255,0.12);
+  animation: hideoutCardIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.hideout-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.85rem;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.09);
+  color: white;
+  font-size: 1.65rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.hideout-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+.hideout-logo-frame {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 138px;
+  height: 112px;
+  margin: 0 auto 1.15rem;
+  border: 2px solid rgba(135, 222, 241, 0.85);
+  border-radius: 48% 52% 43% 57% / 55% 43% 57% 45%;
+  background: linear-gradient(145deg, rgba(89, 190, 218, 0.22), rgba(4, 33, 65, 0.5));
+  box-shadow: 0 0 0 6px rgba(98, 197, 224, 0.08), 0 9px 28px rgba(0,0,0,0.18);
+}
+.hideout-logo-frame img {
+  position: relative;
+  z-index: 1;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+}
+.hideout-wave {
+  position: absolute;
+  z-index: -1;
+  left: -12px;
+  right: -12px;
+  height: 25px;
+  border: 2px solid rgba(139, 224, 241, 0.7);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 50%;
+  transform: rotate(-7deg);
+}
+.hideout-wave--one { bottom: 10px; }
+.hideout-wave--two { bottom: 2px; left: -5px; right: -5px; opacity: 0.48; transform: rotate(7deg); }
+.hideout-copy { max-width: 440px; margin: 0 auto; }
+.hideout-eyebrow {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #8edcf0;
+  font-family: var(--font-condensed);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.hideout-copy h2 {
+  margin: 0 0 0.75rem;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.45rem);
+  line-height: 1.05;
+}
+.hideout-copy p { margin: 0 auto 1.1rem; color: rgba(244, 250, 255, 0.88); font-size: 0.98rem; line-height: 1.6; }
+.hideout-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 1.25rem; }
+.hideout-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 39px;
+  padding: 0.55rem 1rem;
+  border: 1px solid rgba(157, 224, 242, 0.55);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.hideout-actions a:hover { background: rgba(104, 202, 229, 0.24); transform: translateY(-2px); text-decoration: none; }
+.hideout-gif { width: auto; max-width: min(100%, 420px); max-height: 220px; object-fit: contain; margin: 0 auto; border-radius: 12px; }
+@keyframes hideoutOverlayIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hideoutCardIn { from { opacity: 0; transform: translateY(18px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 520px) {
+  .hideout-overlay { padding: 0.75rem; }
+  .hideout-card { padding: 2rem 1.1rem 1.2rem; border-radius: 19px; }
+  .hideout-logo-frame { width: 118px; height: 96px; }
+  .hideout-logo-frame img { width: 66px; height: 66px; }
+  .hideout-gif { max-height: 170px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hideout-overlay, .hideout-card { animation: none; }
+  .hideout-close, .hideout-actions a { transition: none; }
+}
