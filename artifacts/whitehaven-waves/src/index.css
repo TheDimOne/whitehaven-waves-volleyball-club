@@ -1297,19 +1297,22 @@ ul { list-style: none; }
     filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
     pointer-events: none;
   }
-  .scroll-volleyball__ball svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    animation: volleyballRoll 1.8s linear infinite;
+  .scroll-volleyball__ball {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 27px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .scroll-volleyball__ball.is-rolling {
+    animation: volleyballRoll 0.42s linear infinite;
   }
   @keyframes volleyballRoll {
-    to { transform: rotate(360deg); }
+    to { rotate: 360deg; }
   }
 }
 @media (max-width: 768px) {
   .scroll-volleyball { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-volleyball__ball svg { animation: none; }
+  .scroll-volleyball__ball.is-rolling { animation: none; }
 }
