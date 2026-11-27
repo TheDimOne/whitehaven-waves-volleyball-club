@@ -1362,3 +1362,20 @@ ul { list-style: none; }
 @media (prefers-reduced-motion: reduce) { .ww-custom-cursor__click { animation: none; } }
 
 
+
+
+/* Cloudflare Turnstile contact-form challenge */
+.contact__captcha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 65px;
+  margin: 1.25rem 0;
+  overflow: hidden;
+}
+.contact__form .btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
