@@ -18,6 +18,7 @@ export default function Staff() {
       <div className="container">
         <span className="section-label">Committee & Coaching</span>
         <h2 className="section-title section-title--center">Our Team</h2>
+        <p className="staff__intro">The people behind the Waves work hard to make every session safe, welcoming and fun, while helping everyone enjoy and improve at the sport we love.</p>
 
         <div className="staff__grid">
           {staff.map((s, i) => (
