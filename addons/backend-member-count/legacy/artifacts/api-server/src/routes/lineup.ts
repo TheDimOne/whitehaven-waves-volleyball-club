@@ -3,7 +3,7 @@ import { Router, type IRouter } from "express";
 const router: IRouter = Router();
 
 const WORKBOOK_URL =
-  "https://1drv.ms/x/c/48681ba6434674fe/IQCCOwMsOHqTRI5eX0wO_vP2ASvzMv8FqYsmANDBEQ51bIQ?e=oLCFUt&nav=MTVfe0Q1NkUwNjc3LTEyQTgtNDI4OS1BODg2LUJEM0ZBMkRGRTVGM30";
+  "REDACTED_REVOKED_ONEDRIVE_SHARE_LINK";
 const XLSX_CONTENT_TYPE =
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
