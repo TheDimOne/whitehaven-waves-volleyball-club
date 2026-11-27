@@ -1021,7 +1021,7 @@ ul { list-style: none; }
    STAFF
    ============================================================ */
 .staff { background: var(--bg-primary); }
-.staff__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+.staff__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 320px)); justify-content: center; gap: 1.5rem; }
 .staff-card { background: var(--bg-card); border: 1px solid var(--ww-border); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition); }
 .staff-card:hover { transform: translateY(-6px); box-shadow: var(--ww-shadow); border-color: var(--c-cyan); }
 .staff-card__photo {
