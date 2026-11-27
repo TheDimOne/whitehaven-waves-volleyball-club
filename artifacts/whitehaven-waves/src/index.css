@@ -1297,17 +1297,19 @@ ul { list-style: none; }
     filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
     pointer-events: none;
   }
-  .scroll-volleyball__ball {
+  .scroll-volleyball__ball-emoji {
+    display: block;
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
     font-size: 27px;
     line-height: 1;
     white-space: nowrap;
+    transform-origin: 50% 50%;
   }
-  .scroll-volleyball__ball.is-rolling {
+  .scroll-volleyball__ball-emoji.is-rolling {
     animation: volleyballRoll 0.42s linear infinite;
   }
   @keyframes volleyballRoll {
-    to { rotate: 360deg; }
+    to { transform: rotate(360deg); }
   }
 }
 @media (max-width: 768px) {
