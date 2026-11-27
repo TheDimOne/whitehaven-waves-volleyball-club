@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import ScrollVolleyball from "./components/ScrollVolleyball";
 import CustomCursor from "./components/CustomCursor";
+import SphealCompanion from "./components/SphealCompanion";
 
 export default function App() {
   const [theme, setTheme] = useState<"dark" | "light">(() => {
@@ -29,5 +30,5 @@ export default function App() {
     return celebrateAnniversary({ force: demoRequested });
   }, []);
   const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
-  return <><Nav theme={theme} toggleTheme={toggleTheme} /><main><Hero /><About /><Timetable /><Highlights /><Staff /><Contact /></main><Footer /><BackToTop /><ScrollVolleyball /><CustomCursor /></>;
+  return <><Nav theme={theme} toggleTheme={toggleTheme} /><main><Hero /><About /><Timetable /><Highlights /><Staff /><Contact /></main><Footer /><BackToTop /><ScrollVolleyball /><CustomCursor /><SphealCompanion /></>;
 }
