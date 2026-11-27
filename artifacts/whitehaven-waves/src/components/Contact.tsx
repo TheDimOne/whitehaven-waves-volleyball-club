@@ -12,13 +12,23 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = form.subject || "Website enquiry";
+    const subjectLabels: Record<string, string> = {
+      join: "Joining the Club",
+      training: "Training Enquiry",
+      sponsorship: "Sponsorship",
+      press: "Press / Media",
+      other: "Other",
+    };
+    const topic = subjectLabels[form.subject] || "General Enquiry";
+    const subject = `Whitehaven Waves — ${topic}`;
     const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Subject: ${subject}`,
+      "Hello Whitehaven Waves team,",
       "",
-      form.message,
+      form.message.trim(),
+      "",
+      "Kind regards,",
+      form.name.trim(),
+      form.email.trim(),
     ].join("\\n");
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setNote("Your email app should open with your message addressed to Whitehaven Waves. Send it from there to complete delivery.");
