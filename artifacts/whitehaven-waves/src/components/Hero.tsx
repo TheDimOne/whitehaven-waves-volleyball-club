@@ -73,6 +73,7 @@ export default function Hero() {
         <h1 className="hero__title">
           <span className="hero__title-line">Whitehaven</span>
           <span className="hero__title-wave">Waves</span>
+          <span style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0, 0, 0, 0)", whiteSpace: "nowrap", border: 0 }}>Volleyball Club</span>
         </h1>
         <p className="hero__tagline">Ride the wave. Spike the game.</p>
         <div className="hero__cta-group">
