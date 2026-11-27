@@ -1379,3 +1379,23 @@ ul { list-style: none; }
   transform: none;
   box-shadow: none;
 }
+
+
+/* Cursor preference control matches the circular theme toggle. */
+.cursor-toggle {
+  flex: 0 0 36px;
+  padding: 0;
+  overflow: hidden;
+}
+.cursor-toggle__mouse {
+  display: block;
+  font-family: sans-serif;
+  font-size: 19px;
+  line-height: 1;
+}
+.cursor-toggle__image {
+  display: block;
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+}
