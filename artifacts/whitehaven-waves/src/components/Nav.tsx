@@ -64,7 +64,11 @@ export default function Nav({ theme, toggleTheme, customCursorEnabled, toggleCus
   return (
     <nav className={`nav${scrolled ? " scrolled" : ""}`} id="mainNav">
       <div className="nav__brand">
-        <a href="#home" className="nav__logo" onClick={e => handleLinkClick(e, "#home")}>
+        <a href="/home" className="nav__logo" onClick={e => {
+          if (window.location.pathname === "/home" || window.location.pathname === "/home/") {
+            handleLinkClick(e, "#home");
+          }
+        }}>
           <img
             className="nav__logo-image"
             src={clubLogo}
