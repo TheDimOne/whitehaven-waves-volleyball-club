@@ -29,7 +29,7 @@ export default function Contact() {
       "Kind regards,",
       form.name.trim(),
       form.email.trim(),
-    ].join("\\n");
+    ].join("\n");
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setNote("Your email app should open with your message addressed to Whitehaven Waves. Send it from there to complete delivery.");
   };
