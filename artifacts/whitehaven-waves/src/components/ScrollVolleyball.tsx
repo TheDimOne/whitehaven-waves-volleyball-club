@@ -93,11 +93,11 @@ export default function ScrollVolleyball() {
       <span className="scroll-volleyball__track" />
       <span className="scroll-volleyball__progress" style={{ height: `${progress * 100}%` }} />
       <span
-        className={`scroll-volleyball__ball${isScrolling ? " is-rolling" : ""}`}
+        className="scroll-volleyball__ball"
         style={{ top: `${progress * 100}%` }}
         aria-hidden="true"
       >
-        🏐
+        <span className={`scroll-volleyball__ball-emoji${isScrolling ? " is-rolling" : ""}`}>🏐</span>
       </span>
     </div>
   );
