@@ -1318,3 +1318,62 @@ ul { list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   .scroll-volleyball__ball.is-rolling { animation: none; }
 }
+
+
+/* Custom image cursor: desktop/laptop pointers only. */
+@media (hover: hover) and (pointer: fine) {
+  html.ww-custom-cursor-enabled,
+  html.ww-custom-cursor-enabled body,
+  html.ww-custom-cursor-enabled body * {
+    cursor: none !important;
+  }
+  html.ww-custom-cursor-enabled input,
+  html.ww-custom-cursor-enabled textarea,
+  html.ww-custom-cursor-enabled select,
+  html.ww-custom-cursor-enabled [contenteditable="true"] {
+    cursor: text !important;
+  }
+  .ww-custom-cursor {
+    position: fixed;
+    z-index: 99999;
+    left: -100px;
+    top: -100px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 100ms ease;
+    will-change: left, top;
+  }
+  .ww-custom-cursor.is-visible { opacity: 1; }
+  .ww-custom-cursor__pointer {
+    position: absolute;
+    left: -7px;
+    top: -5px;
+    display: block;
+    width: 38px;
+    height: auto;
+    max-height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+  }
+  .ww-custom-cursor__click {
+    position: absolute;
+    left: -27px;
+    top: -27px;
+    display: block;
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+    animation: ww-cursor-click 360ms ease-out both;
+  }
+  @keyframes ww-cursor-click {
+    0% { transform: scale(0.72); opacity: 0.65; }
+    45% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ww-custom-cursor__click { animation: none; }
+}
