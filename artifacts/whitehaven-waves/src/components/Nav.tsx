@@ -4,6 +4,8 @@ import clubLogo from "../assets/whitehaven-waves-logo.jpg";
 interface NavProps {
   theme: "dark" | "light";
   toggleTheme: () => void;
+  customCursorEnabled: boolean;
+  toggleCustomCursor: () => void;
 }
 
 const links = [
@@ -13,7 +15,7 @@ const links = [
   { href: "#staff", label: "Staff" },
 ];
 
-export default function Nav({ theme, toggleTheme }: NavProps) {
+export default function Nav({ theme, toggleTheme, customCursorEnabled, toggleCustomCursor }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -95,8 +97,21 @@ export default function Nav({ theme, toggleTheme }: NavProps) {
           </a>
         </li>
         <li>
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark/light mode">
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark/light mode" title="Toggle light/dark mode">
             {theme === "dark" ? "🌊" : "☀️"}
+          </button>
+        </li>
+        <li>
+          <button
+            className="theme-toggle cursor-toggle"
+            onClick={toggleCustomCursor}
+            aria-label={customCursorEnabled ? "Turn off custom cursor" : "Turn on custom cursor"}
+            aria-pressed={customCursorEnabled}
+            title={customCursorEnabled ? "Turn off custom cursor" : "Turn on custom cursor"}
+          >
+            {customCursorEnabled
+              ? <span className="cursor-toggle__mouse" aria-hidden="true">🖱</span>
+              : <img className="cursor-toggle__image" src="/cursor.png" alt="" />}
           </button>
         </li>
       </ul>
