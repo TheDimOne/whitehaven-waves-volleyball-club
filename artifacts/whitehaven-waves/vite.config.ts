@@ -11,7 +11,6 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-
   ],
   resolve: {
     alias: {
@@ -29,7 +28,7 @@ export default defineConfig({
     port,
     strictPort: true,
     host: "0.0.0.0",
-    allowedHosts: true,
+    allowedHosts: [".replit.dev", ".repl.co", "whitehavenwaves.co.uk", "www.whitehavenwaves.co.uk"],
     fs: {
       strict: true,
     },
@@ -37,6 +36,6 @@ export default defineConfig({
   preview: {
     port,
     host: "0.0.0.0",
-    allowedHosts: true,
+    allowedHosts: [".replit.dev", ".repl.co", "whitehavenwaves.co.uk", "www.whitehavenwaves.co.uk"],
   },
 });
