@@ -8,7 +8,6 @@ interface NavProps {
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#lineup", label: "Line-Up" },
   { href: "#timetable", label: "Timetable" },
   { href: "#highlights", label: "Highlights" },
   { href: "#staff", label: "Staff" },

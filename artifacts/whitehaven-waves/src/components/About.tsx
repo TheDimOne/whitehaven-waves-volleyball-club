@@ -57,7 +57,6 @@ export default function About() {
             <p className="about__body">We believe in building athletes who are fearless on the court and grounded off it. Training hard, playing harder, and always showing up for each other — that's the Waves way.</p>
             <div className="about__stats">
               <StatCounter key={yearsActive} target={yearsActive} label="Years Active" />
-              <StatCounter target={14} label="Squad Members" />
               <StatCounter target={0} displayValue="∞" label="Memories Made" />
             </div>
           </div>

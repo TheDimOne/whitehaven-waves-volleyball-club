@@ -4,11 +4,15 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
-    "build": "pnpm run typecheck && pnpm -r --if-present run build",
-    "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "build": "pnpm run typecheck && pnpm --filter @workspace/whitehaven-waves run build",
+    "typecheck": "pnpm --filter @workspace/whitehaven-waves run typecheck"
   },
   "private": true,
+  "pnpm": {
+    "overrides": {
+      "qs": "6.17.1"
+    }
+  },
   "devDependencies": {
     "prettier": "^3.8.3",
     "typescript": "~5.9.3"
