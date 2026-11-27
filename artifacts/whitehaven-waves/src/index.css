@@ -1566,7 +1566,6 @@ ul { list-style: none; }
   gap: 4rem;
   padding-right: 4rem;
 }
-.hero__ticker:hover .ticker__track { animation-play-state: paused; }
 @media (max-width: 600px) {
   .ticker__group { gap: 2rem; padding-right: 2rem; }
 }
