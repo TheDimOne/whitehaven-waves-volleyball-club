@@ -1255,9 +1255,9 @@ ul { list-style: none; }
     position: fixed;
     z-index: 998;
     top: 9vh;
-    right: 15px;
+    right: 2px;
     bottom: 9vh;
-    width: 30px;
+    width: 56px;
     cursor: grab;
     touch-action: none;
     outline: none;
