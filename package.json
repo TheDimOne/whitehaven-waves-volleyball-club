@@ -9,13 +9,13 @@
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
   "private": true,
-  "devDependencies": {
-    "prettier": "^3.8.3",
-    "typescript": "~5.9.3"
-  },
   "pnpm": {
     "overrides": {
       "qs": "6.17.1"
     }
+  },
+  "devDependencies": {
+    "prettier": "^3.8.3",
+    "typescript": "~5.9.3"
   }
 }
