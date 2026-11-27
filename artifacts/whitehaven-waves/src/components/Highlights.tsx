@@ -5,7 +5,7 @@ const videos = [
     tag: "Match 1",
     title: "Whitehaven Waves vs St Bees Match 1 Highlights",
     desc: "Highlights from Whitehaven Waves vs St Bees.",
-    src: "https://www.youtube.com/embed/tr4SijEEuz0",
+    src: "https://www.youtube-nocookie.com/embed/tr4SijEEuz0",
   },
   {
     tag: "Match 2",
@@ -40,9 +40,10 @@ export default function Highlights() {
                   src={v.src}
                   title={v.title}
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
                 />
               </div>
               <div className="video-card__meta">
