@@ -1214,6 +1214,9 @@ ul { list-style: none; }
   .fixture__badge { grid-row: 2; grid-column: 2; justify-self: start; }
   .result { grid-template-columns: 60px 1fr 32px; }
   .team__grid, .highlights__grid { grid-template-columns: 1fr; }
+  .staff__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .staff-card, .staff-card:nth-child(n) { grid-column: auto; }
+  .staff-card:nth-child(7) { grid-column: 1 / -1; width: calc(50% - 0.75rem); justify-self: center; }
   .footer__content { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .court__surface { padding: 2rem 0.75rem; }
@@ -1231,4 +1234,6 @@ ul { list-style: none; }
   .contact__qr { gap: 0.75rem; padding: 0.75rem; }
   .contact__qr-image { width: 104px; height: 104px; }
   .footer__brand-mark { width: 84px; height: 84px; }
+  .staff__grid { grid-template-columns: 1fr; }
+  .staff-card:nth-child(7) { grid-column: auto; width: 100%; }
 }
