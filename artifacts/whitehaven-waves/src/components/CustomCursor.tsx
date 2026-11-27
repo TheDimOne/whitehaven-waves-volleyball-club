@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type PointerPosition = { x: number; y: number };
 
-export default function CustomCursor() {
+export default function CustomCursor({ enabled }: { enabled: boolean }) {
   const [position, setPosition] = useState<PointerPosition>({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
   const [hoveringAction, setHoveringAction] = useState(false);
@@ -11,7 +11,7 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const media = window.matchMedia("(hover: hover) and (pointer: fine)");
-    if (!media.matches) return;
+    if (!enabled || !media.matches) return;
 
     const onMove = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
@@ -29,15 +29,15 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
     };
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
-    const enabled = imageReady && !imageFailed;
-    document.documentElement.classList.toggle("ww-custom-cursor-enabled", enabled);
+    const shouldEnable = enabled && imageReady && !imageFailed && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    document.documentElement.classList.toggle("ww-custom-cursor-enabled", shouldEnable);
     return () => document.documentElement.classList.remove("ww-custom-cursor-enabled");
-  }, [imageReady, imageFailed]);
+  }, [enabled, imageReady, imageFailed]);
 
-  if (imageFailed || typeof window === "undefined" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return null;
+  if (!enabled || imageFailed || typeof window === "undefined" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return null;
 
   return (
     <>
