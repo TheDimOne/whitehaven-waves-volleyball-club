@@ -25,6 +25,11 @@ export default function App() {
     localStorage.setItem("ww-custom-cursor", customCursorEnabled ? "on" : "off");
   }, [customCursorEnabled]);
   useEffect(() => {
+    if (window.location.pathname === "/") {
+      window.history.replaceState({}, "", `/home${window.location.search}${window.location.hash}`);
+    }
+  }, []);
+  useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("ww-theme", theme);
   }, [theme]);
