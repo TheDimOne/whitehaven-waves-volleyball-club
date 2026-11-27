@@ -1,17 +1,106 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import registrationQr from "../assets/whitehaven-waves-registration-qr.png";
 
 const REGISTRATION_URL = "https://forms.cloud.microsoft/r/cdx9fqwetk";
 const CONTACT_EMAIL = "whitehavenwaves@outlook.com";
+const TURNSTILE_SITE_KEY = "0x4AAAAAAGWMD2q2dFZxZNUE";
+const TURNSTILE_VERIFY_URL = "https://whitehaven-waves-turnstile.sim12eon.workers.dev/";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, options: {
+        sitekey: string;
+        callback: (token: string) => void;
+        "expired-callback": () => void;
+        "error-callback": () => void;
+      }) => string;
+      reset: (widgetId?: string) => void;
+      remove: (widgetId: string) => void;
+    };
+  }
+}
 
 export default function Contact() {
   const ref = useScrollReveal();
   const [note, setNote] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [isVerifying, setIsVerifying] = useState(false);
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    let cancelled = false;
+    const mountWidget = () => {
+      if (cancelled || !turnstileRef.current || !window.turnstile || widgetIdRef.current) return;
+      widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token) => {
+          setTurnstileToken(token);
+          setNote("");
+        },
+        "expired-callback": () => {
+          setTurnstileToken("");
+          setNote("Your CAPTCHA has expired. Please complete it again.");
+        },
+        "error-callback": () => {
+          setTurnstileToken("");
+          setNote("CAPTCHA could not load correctly. Please refresh the page and try again.");
+        },
+      });
+    };
+
+    const scriptUrl = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    let script = document.querySelector<HTMLScriptElement>(`script[src="${scriptUrl}"]`);
+    const handleLoad = () => mountWidget();
+
+    if (window.turnstile) {
+      mountWidget();
+    } else if (script) {
+      script.addEventListener("load", handleLoad);
+    } else {
+      script = document.createElement("script");
+      script.src = scriptUrl;
+      script.async = true;
+      script.defer = true;
+      script.addEventListener("load", handleLoad);
+      script.addEventListener("error", () => setNote("CAPTCHA could not load. Check your connection and refresh the page."));
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      cancelled = true;
+      script?.removeEventListener("load", handleLoad);
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
+      }
+    };
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!turnstileToken) {
+      setNote("Please complete the CAPTCHA before sending your message.");
+      return;
+    }
+    setIsVerifying(true);
+    setNote("Verifying CAPTCHA…");
+    try {
+      const response = await fetch(TURNSTILE_VERIFY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: turnstileToken }),
+      });
+      const result = await response.json() as { success?: boolean };
+      if (!response.ok || result.success !== true) {
+        setTurnstileToken("");
+        if (widgetIdRef.current && window.turnstile) window.turnstile.reset(widgetIdRef.current);
+        setNote("CAPTCHA verification failed. Please try again.");
+        return;
+      }
     const subjectLabels: Record<string, string> = {
       join: "Joining the Club",
       training: "Training Enquiry",
@@ -30,8 +119,15 @@ export default function Contact() {
       form.name.trim(),
       form.email.trim(),
     ].join("\n");
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setNote("Your email app should open with your message addressed to Whitehaven Waves. Send it from there to complete delivery.");
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setNote("Your email app should open with your message addressed to Whitehaven Waves. Send it from there to complete delivery.");
+    } catch {
+      setTurnstileToken("");
+      if (widgetIdRef.current && window.turnstile) window.turnstile.reset(widgetIdRef.current);
+      setNote("We couldn't verify the CAPTCHA because of a connection error. Please try again.");
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   return (
@@ -141,8 +237,11 @@ export default function Contact() {
                   value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                 />
               </div>
-              <button type="submit" className="btn btn--primary btn--full">
-                Send Message 🌊
+              <div className="contact__captcha" aria-label="Spam protection">
+                <div ref={turnstileRef} />
+              </div>
+              <button type="submit" className="btn btn--primary btn--full" disabled={isVerifying || !turnstileToken}>
+                {isVerifying ? "Verifying…" : "Send Message 🌊"}
               </button>
               {note && <p className="form__note" role="status">{note}</p>}
             </form>
