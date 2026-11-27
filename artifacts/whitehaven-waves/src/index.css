@@ -1550,3 +1550,69 @@ ul { list-style: none; }
   .hideout-overlay, .hideout-card { animation: none; }
   .hideout-close, .hideout-actions a { transition: none; }
 }
+
+
+/* ============================================================
+   CONTINUOUS STAFF + HIGHLIGHTS CAROUSELS
+   ============================================================ */
+.staff__carousel,
+.highlights__carousel {
+  --carousel-gap: 2rem;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.75rem 0 1.5rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+}
+.staff__track,
+.highlights__track {
+  display: flex;
+  width: max-content;
+  animation: wavesCarouselLoop 58s linear infinite;
+  will-change: transform;
+}
+.highlights__track { animation-duration: 48s; }
+.staff__group,
+.highlights__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  gap: var(--carousel-gap);
+  padding-right: var(--carousel-gap);
+}
+.staff-card {
+  grid-column: auto !important;
+  flex: 0 0 270px;
+  width: 270px;
+  min-height: 100%;
+}
+.video-card {
+  flex: 0 0 390px;
+  width: 390px;
+}
+.staff__carousel:hover .staff__track,
+.staff__carousel:focus-within .staff__track,
+.highlights__carousel:hover .highlights__track,
+.highlights__carousel:focus-within .highlights__track {
+  animation-play-state: paused;
+}
+@keyframes wavesCarouselLoop {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (max-width: 600px) {
+  .staff__carousel,
+  .highlights__carousel { --carousel-gap: 1.25rem; }
+  .staff-card { flex-basis: 245px; width: 245px; }
+  .video-card { flex-basis: min(82vw, 350px); width: min(82vw, 350px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .staff__track,
+  .highlights__track { animation: none; }
+  .staff__carousel,
+  .highlights__carousel {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
