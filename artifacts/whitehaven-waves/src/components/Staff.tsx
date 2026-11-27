@@ -20,21 +20,27 @@ export default function Staff() {
         <h2 className="section-title section-title--center">Our Team</h2>
         <p className="staff__intro">The people behind the Waves work hard to make every session safe, welcoming and fun, while helping everyone enjoy and improve at the sport we love.</p>
 
-        <div className="staff__grid">
-          {staff.map((s, i) => (
-            <article key={s.name} className={`staff-card reveal${i % 3 ? ` reveal--delay-${i % 3}` : ""}`} tabIndex={0}>
-              <div className="staff-card__photo" aria-hidden="true">{s.emoji}</div>
-              <div className="staff-card__info">
-                <h3 className="staff-card__name">{s.name}</h3>
-                <span className="staff-card__role">{s.role}</span>
+        <div className="staff__carousel" aria-label="Club staff carousel">
+          <div className="staff__track">
+            {[0, 1].map((group) => (
+              <div className="staff__group" key={group} aria-hidden={group === 1 ? "true" : undefined}>
+                {staff.map((s) => (
+                  <article key={`${group}-${s.name}`} className="staff-card" tabIndex={group === 1 ? -1 : 0}>
+                    <div className="staff-card__photo" aria-hidden="true">{s.emoji}</div>
+                    <div className="staff-card__info">
+                      <h3 className="staff-card__name">{s.name}</h3>
+                      <span className="staff-card__role">{s.role}</span>
+                    </div>
+                    <div className="staff-card__overlay">
+                      <span className="staff-card__overlay-role">{s.role}</span>
+                      <h3>{s.name}</h3>
+                      <p>{s.bio}</p>
+                    </div>
+                  </article>
+                ))}
               </div>
-              <div className="staff-card__overlay">
-                <span className="staff-card__overlay-role">{s.role}</span>
-                <h3>{s.name}</h3>
-                <p>{s.bio}</p>
-              </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
