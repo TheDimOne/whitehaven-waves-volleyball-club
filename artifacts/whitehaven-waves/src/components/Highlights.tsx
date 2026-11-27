@@ -32,27 +32,34 @@ export default function Highlights() {
         <span className="section-label">On the Court</span>
         <h2 className="section-title section-title--center">Highlight Reel</h2>
 
-        <div className="highlights__grid">
-          {videos.map((v, i) => (
-            <div key={i} className={`video-card reveal${v.delay ? ` reveal--delay-${v.delay}` : ""}`}>
-              <div className="video-card__embed">
-                <iframe
-                  src={v.src}
-                  title={v.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
+        <div className="highlights__carousel" aria-label="Match highlights carousel">
+          <div className="highlights__track">
+            {[0, 1].map((group) => (
+              <div className="highlights__group" key={group} aria-hidden={group === 1 ? "true" : undefined}>
+                {videos.map((v) => (
+                  <div key={`${group}-${v.tag}`} className="video-card">
+                    <div className="video-card__embed">
+                      <iframe
+                        src={v.src}
+                        title={v.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                        tabIndex={group === 1 ? -1 : 0}
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
+                    </div>
+                    <div className="video-card__meta">
+                      <span className="video-card__tag">{v.tag}</span>
+                      <h3 className="video-card__title">{v.title}</h3>
+                      <p className="video-card__desc">{v.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="video-card__meta">
-                <span className="video-card__tag">{v.tag}</span>
-                <h3 className="video-card__title">{v.title}</h3>
-                <p className="video-card__desc">{v.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="social-strip reveal">
