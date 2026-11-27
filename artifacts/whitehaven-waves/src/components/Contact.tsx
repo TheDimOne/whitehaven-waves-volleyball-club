@@ -3,23 +3,25 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 import registrationQr from "../assets/whitehaven-waves-registration-qr.png";
 
 const REGISTRATION_URL = "https://forms.cloud.microsoft/r/cdx9fqwetk";
+const CONTACT_EMAIL = "whitehavenwaves@outlook.com";
 
 export default function Contact() {
   const ref = useScrollReveal();
   const [note, setNote] = useState("");
-  const [noteColor, setNoteColor] = useState("#94a3b8");
-  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitting(true);
-    setTimeout(() => {
-      setNote("Message received! We'll get back to you soon.");
-      setNoteColor("#34d399");
-      setForm({ name: "", email: "", subject: "", message: "" });
-      setSubmitting(false);
-    }, 800);
+    const subject = form.subject || "Website enquiry";
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Subject: ${subject}`,
+      "",
+      form.message,
+    ].join("\\n");
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setNote("Your email app should open with your message addressed to Whitehaven Waves. Send it from there to complete delivery.");
   };
 
   return (
@@ -42,7 +44,7 @@ export default function Contact() {
               <span className="contact-block__icon">📧</span>
               <div>
                 <h4>Email</h4>
-                <a href="mailto:info@whitehavenwaves.com">info@whitehavenwaves.com</a>
+                <a href="mailto:whitehavenwaves@outlook.com">whitehavenwaves@outlook.com</a>
               </div>
             </div>
             <div className="contact-block">
@@ -99,7 +101,7 @@ export default function Contact() {
           </div>
 
           <div className="contact__form reveal reveal--right">
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit}>
               <div className="form__group">
                 <label className="form__label" htmlFor="name">Your Name</label>
                 <input
@@ -136,10 +138,10 @@ export default function Contact() {
                   value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                 />
               </div>
-              <button type="submit" className="btn btn--primary btn--full" disabled={submitting}>
-                {submitting ? "Sending…" : "Send Message 🌊"}
+              <button type="submit" className="btn btn--primary btn--full">
+                Send Message 🌊
               </button>
-              {note && <p className="form__note" style={{ color: noteColor }}>{note}</p>}
+              {note && <p className="form__note" role="status">{note}</p>}
             </form>
           </div>
         </div>
