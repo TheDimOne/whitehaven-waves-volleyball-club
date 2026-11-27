@@ -40,6 +40,15 @@ export default function Nav({ theme, toggleTheme, customCursorEnabled, toggleCus
   }, []);
 
   useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
+  useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
@@ -70,7 +79,9 @@ export default function Nav({ theme, toggleTheme, customCursorEnabled, toggleCus
       <button
         className={`nav__hamburger${menuOpen ? " open" : ""}`}
         onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        aria-controls="navLinks"
       >
         <span /><span /><span />
       </button>
