@@ -1021,17 +1021,22 @@ ul { list-style: none; }
    STAFF
    ============================================================ */
 .staff { background: var(--bg-primary); }
-.staff__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 320px)); justify-content: center; gap: 1.5rem; }
-.staff-card { background: var(--bg-card); border: 1px solid var(--ww-border); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition); }
+.staff__intro { max-width: 760px; margin: -0.75rem auto 2.5rem; color: var(--text-secondary); text-align: center; font-size: 1.08rem; line-height: 1.8; }
+.staff__grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 1.5rem; }
+.staff-card { grid-column: span 2; min-width: 0; background: var(--bg-card); border: 1px solid var(--ww-border); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition); }
+.staff-card:nth-child(5) { grid-column: 2 / span 2; }
+.staff-card:nth-child(6) { grid-column: 4 / span 2; }
+.staff-card:nth-child(7) { grid-column: 6 / span 2; }
 .staff-card:hover { transform: translateY(-6px); box-shadow: var(--ww-shadow); border-color: var(--c-cyan); }
 .staff-card__photo {
   height: 200px;
   background: linear-gradient(135deg, var(--c-ocean-surface), var(--c-ocean-deep));
   position: relative; display: flex; align-items: center; justify-content: center; font-size: 3rem; opacity: 0.6;
 }
-.staff-card__info { padding: 1.25rem; }
-.staff-card__name { font-family: var(--font-condensed); font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
-.staff-card__role { display: block; font-family: var(--font-condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-cyan); margin-bottom: 0.75rem; }
+.staff-card__info { position: relative; padding: 1.4rem 1.25rem 1.25rem; text-align: center; }
+.staff-card__info::before { content: ""; position: absolute; z-index: 1; left: 0; right: 0; top: -13px; height: 14px; background: var(--bg-card); clip-path: polygon(0 35%, 8% 48%, 16% 35%, 24% 55%, 32% 42%, 40% 68%, 48% 48%, 56% 72%, 64% 45%, 72% 62%, 80% 38%, 88% 55%, 96% 35%, 100% 42%, 100% 100%, 0 100%); }
+.staff-card__name { position: relative; font-family: var(--font-condensed); font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
+.staff-card__role { position: relative; display: block; font-family: var(--font-condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-cyan); margin-bottom: 0.25rem; }
 .staff-card__bio { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
 .staff-card__contact { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-muted); transition: color var(--transition); text-decoration: none; }
 .staff-card__contact:hover { color: var(--ww-accent); text-decoration: none; }
