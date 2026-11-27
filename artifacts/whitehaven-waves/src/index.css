@@ -1340,11 +1340,11 @@ ul { list-style: none; }
   }
   .ww-custom-cursor.is-visible { opacity: 1; }
   .ww-custom-cursor__pointer {
-    display: block; width: 42px; height: auto; max-height: 52px;
+    display: block; width: 72px; height: auto; max-width: none; max-height: none;
     object-fit: contain; filter: drop-shadow(0 2px 3px rgba(0,0,0,.4));
   }
   .ww-custom-cursor__click {
-    display: block; width: 58px; height: 58px; object-fit: contain;
+    display: block; width: 96px; height: auto; max-width: none; max-height: none; object-fit: contain;
     transform: translate(-20px, -20px);
     filter: drop-shadow(0 2px 4px rgba(0,0,0,.4));
     animation: ww-cursor-click 360ms ease-out both;
