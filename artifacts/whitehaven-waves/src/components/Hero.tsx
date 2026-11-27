@@ -6,11 +6,6 @@ const tickerItems = [
   "🌊 Stay Wavy",
   "🏐 All ability levels welcome",
   "📅 Wednesday 19:30 - 21:30",
-  "📱 Follow our socials",
-  "✉️ Contact to Register",
-  "🌊 Stay Wavy",
-  "🏐 All ability levels welcome",
-  "📅 Wednesday 19:30 - 21:30",
 ];
 
 export default function Hero() {
@@ -88,8 +83,12 @@ export default function Hero() {
 
       <div className="hero__ticker">
         <div className="ticker__track">
-          {tickerItems.map((item, i) => (
-            <span key={i} className="ticker__item">{item}</span>
+          {[0, 1].map((group) => (
+            <div className="ticker__group" key={group} aria-hidden={group === 1 ? "true" : undefined}>
+              {tickerItems.map((item, i) => (
+                <span key={i} className="ticker__item">{item}</span>
+              ))}
+            </div>
           ))}
         </div>
       </div>
