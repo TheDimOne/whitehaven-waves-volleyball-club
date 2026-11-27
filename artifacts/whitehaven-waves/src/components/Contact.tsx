@@ -101,24 +101,24 @@ export default function Contact() {
         setNote("CAPTCHA verification failed. Please try again.");
         return;
       }
-    const subjectLabels: Record<string, string> = {
+      const subjectLabels: Record<string, string> = {
       join: "Joining the Club",
       training: "Training Enquiry",
       sponsorship: "Sponsorship",
       press: "Press / Media",
       other: "Other",
     };
-    const topic = subjectLabels[form.subject] || "General Enquiry";
-    const subject = `Whitehaven Waves — ${topic}`;
-    const body = [
-      "Hello Whitehaven Waves team,",
-      "",
-      form.message.trim(),
-      "",
-      "Kind regards,",
-      form.name.trim(),
-      form.email.trim(),
-    ].join("\n");
+      const topic = subjectLabels[form.subject] || "General Enquiry";
+      const subject = `Whitehaven Waves — ${topic}`;
+      const body = [
+        "Hello Whitehaven Waves team,",
+        "",
+        form.message.trim(),
+        "",
+        "Kind regards,",
+        form.name.trim(),
+        form.email.trim(),
+      ].join("\n");
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       setNote("Your email app should open with your message addressed to Whitehaven Waves. Send it from there to complete delivery.");
     } catch {
