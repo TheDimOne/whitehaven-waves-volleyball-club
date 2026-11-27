@@ -247,7 +247,7 @@ ul { list-style: none; }
 }
 @keyframes ticker {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(-25%); }
 }
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(40px); }
@@ -1564,11 +1564,13 @@ ul { list-style: none; }
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: 4rem;
-  padding-right: 4rem;
+  justify-content: space-around;
+  gap: clamp(1rem, 3vw, 3rem);
+  min-width: 100vw;
+  padding: 0 2rem;
 }
 @media (max-width: 600px) {
-  .ticker__group { gap: 2rem; padding-right: 2rem; }
+  .ticker__group { gap: 1.25rem; padding: 0 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ticker__track { animation: none; }
