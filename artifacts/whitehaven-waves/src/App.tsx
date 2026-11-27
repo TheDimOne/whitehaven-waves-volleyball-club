@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import ScrollVolleyball from "./components/ScrollVolleyball";
 import CustomCursor from "./components/CustomCursor";
+import HideoutWelcome from "./components/HideoutWelcome";
 
 export default function App() {
   const [customCursorEnabled, setCustomCursorEnabled] = useState(() => localStorage.getItem("ww-custom-cursor") !== "off");
@@ -33,5 +34,5 @@ export default function App() {
     return celebrateAnniversary({ force: demoRequested });
   }, []);
   const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
-  return <><Nav theme={theme} toggleTheme={toggleTheme} customCursorEnabled={customCursorEnabled} toggleCustomCursor={() => setCustomCursorEnabled(enabled => !enabled)} /><main><Hero /><About /><Timetable /><Highlights /><Staff /><Contact /></main><Footer /><BackToTop /><ScrollVolleyball /><CustomCursor enabled={customCursorEnabled} /></>;
+  return <><HideoutWelcome /><Nav theme={theme} toggleTheme={toggleTheme} customCursorEnabled={customCursorEnabled} toggleCustomCursor={() => setCustomCursorEnabled(enabled => !enabled)} /><main><Hero /><About /><Timetable /><Highlights /><Staff /><Contact /></main><Footer /><BackToTop /><ScrollVolleyball /><CustomCursor enabled={customCursorEnabled} /></>;
 }
