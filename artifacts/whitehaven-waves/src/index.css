@@ -933,18 +933,35 @@ ul { list-style: none; }
   color: #fff;
   text-decoration: none;
 }
-.spike-link__mark {
-  display: inline-flex;
-  align-items: center;
+.schedule-grid--single {
+  display: flex;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: #f28c00;
-  color: #171717;
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  letter-spacing: 0;
+}
+.schedule-card--centered {
+  width: min(100%, 520px);
+  justify-content: center;
+}
+.schedule-card--centered .schedule-card__details {
+  flex: 0 1 auto;
+  text-align: left;
+}
+.spike-invite {
+  max-width: 680px;
+  margin: var(--space-md) auto 0;
+  text-align: center;
+}
+.spike-invite__copy {
+  margin: 0 auto 1.25rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.spike-link__logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  object-fit: cover;
+  flex: 0 0 auto;
 }
 
 
