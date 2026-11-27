@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import clubLogo from "../assets/whitehaven-waves-logo.jpg";
 
 interface NavProps {
   theme: "dark" | "light";
@@ -54,12 +55,13 @@ export default function Nav({ theme, toggleTheme }: NavProps) {
     <nav className={`nav${scrolled ? " scrolled" : ""}`} id="mainNav">
       <div className="nav__brand">
         <a href="#home" className="nav__logo" onClick={e => handleLinkClick(e, "#home")}>
-          <svg className="nav__logo-icon" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="28" stroke="currentColor" strokeWidth="2"/>
-            <path d="M10 38 Q20 28 30 38 Q40 48 50 38" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-            <path d="M10 30 Q20 20 30 30 Q40 40 50 30" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-            <text x="50%" y="22" dominantBaseline="middle" textAnchor="middle" fontFamily="Bebas Neue" fontSize="11" fill="currentColor">WAVES</text>
-          </svg>
+          <img
+            className="nav__logo-image"
+            src={clubLogo}
+            alt="Whitehaven Waves Volleyball Club crest"
+            width={46}
+            height={46}
+          />
           <span className="nav__team-name">Whitehaven<em>Waves</em></span>
         </a>
       </div>

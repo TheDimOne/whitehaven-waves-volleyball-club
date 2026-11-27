@@ -225,10 +225,10 @@ export default function Lineup() {
             <div className="court__ball">
               <svg viewBox="0 0 40 40" fill="none">
                 <circle cx="20" cy="20" r="18" fill="white" opacity="0.9"/>
-                <path d="M2 20 Q10 8 20 8 Q30 8 38 20" stroke="#0ea5e9" strokeWidth="1.5" fill="none"/>
-                <path d="M2 20 Q10 32 20 32 Q30 32 38 20" stroke="#0ea5e9" strokeWidth="1.5" fill="none"/>
-                <path d="M14 2 Q8 14 8 20 Q8 26 14 38" stroke="#06b6d4" strokeWidth="1.5" fill="none"/>
-                <path d="M26 2 Q32 14 32 20 Q32 26 26 38" stroke="#06b6d4" strokeWidth="1.5" fill="none"/>
+                <path d="M2 20 Q10 8 20 8 Q30 8 38 20" stroke="#178dd4" strokeWidth="1.5" fill="none"/>
+                <path d="M2 20 Q10 32 20 32 Q30 32 38 20" stroke="#178dd4" strokeWidth="1.5" fill="none"/>
+                <path d="M14 2 Q8 14 8 20 Q8 26 14 38" stroke="#52a5d8" strokeWidth="1.5" fill="none"/>
+                <path d="M26 2 Q32 14 32 20 Q32 26 26 38" stroke="#52a5d8" strokeWidth="1.5" fill="none"/>
               </svg>
             </div>
           </div>

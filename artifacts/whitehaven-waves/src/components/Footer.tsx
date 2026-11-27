@@ -1,3 +1,5 @@
+import footerLogo from "../assets/whitehaven-waves-logo-footer.jpg";
+
 export default function Footer() {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -10,8 +12,19 @@ export default function Footer() {
       </div>
       <div className="container footer__content">
         <div className="footer__brand">
-          <span className="footer__logo">Whitehaven<em>Waves</em></span>
-          <p>Ride the wave. Spike the game.</p>
+          <div className="footer__brand-lockup">
+            <img
+              className="footer__brand-mark"
+              src={footerLogo}
+              alt="Whitehaven Waves Volleyball Club crest"
+              width={112}
+              height={112}
+            />
+            <div>
+              <span className="footer__logo">Whitehaven<em>Waves</em></span>
+              <p>Ride the wave. Spike the game.</p>
+            </div>
+          </div>
         </div>
 
         <div className="footer__links">

@@ -34,11 +34,11 @@ const galleryItems = [
 ];
 
 const galleryColors = [
-  "linear-gradient(135deg,#0f3460,#0d2240)",
-  "linear-gradient(135deg,#0a4f3a,#0f3460)",
-  "linear-gradient(135deg,#0d2240,#0a1628)",
-  "linear-gradient(135deg,#0f3460,#0a4f3a)",
-  "linear-gradient(135deg,#162040,#0f3460)",
+  "linear-gradient(135deg,#0f3876,#0d407e)",
+  "linear-gradient(135deg,#0e6fb5,#0f3876)",
+  "linear-gradient(135deg,#0d407e,#0f3876)",
+  "linear-gradient(135deg,#0e7cc3,#0e6fb5)",
+  "linear-gradient(135deg,#0f3876,#0e6fb5)",
 ];
 
 export default function About() {

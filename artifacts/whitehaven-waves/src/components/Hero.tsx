@@ -47,8 +47,8 @@ export default function Hero() {
         left: `${Math.random() * 100}%`,
         width: `${size}px`, height: `${size}px`,
         borderRadius: "50%",
-        background: "rgba(14,165,233,0.3)",
-        border: "1px solid rgba(14,165,233,0.5)",
+        background: "rgba(23,141,212,0.3)",
+        border: "1px solid rgba(23,141,212,0.5)",
         animation: `bubbleRise ${Math.random() * 6 + 6}s ease-in ${Math.random() * 8}s infinite`,
         pointerEvents: "none",
       });

@@ -1,7 +1,7 @@
 const GROUP_START_DATE = new Date(2023, 4, 5);
 const ANNIVERSARY_MONTH = GROUP_START_DATE.getMonth();
 const ANNIVERSARY_DAY = GROUP_START_DATE.getDate();
-const CONFETTI_COLORS = ["#0ea5e9", "#06b6d4", "#fbbf24", "#f0f9ff", "#38bdf8"];
+const CONFETTI_COLORS = ["#178dd4", "#0e7cc3", "#52a5d8", "#c0cadd", "#f7fbff"];
 
 export function isAnniversary(today = new Date()) {
   return (

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import registrationQr from "../assets/whitehaven-waves-registration-qr.png";
+
+const REGISTRATION_URL = "https://forms.cloud.microsoft/r/cdx9fqwetk";
 
 export default function Contact() {
   const ref = useScrollReveal();
@@ -60,6 +63,36 @@ export default function Contact() {
                 </a>
                 <a href="https://www.youtube.com/@WhitehavenWaves" className="social-link social-link--yt" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div className="contact__qr">
+              <a
+                className="contact__qr-image-link"
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open the Whitehaven Waves registration form"
+              >
+                <img
+                  className="contact__qr-image"
+                  src={registrationQr}
+                  alt="QR code for the Whitehaven Waves registration form"
+                  width={144}
+                  height={144}
+                  loading="lazy"
+                />
+              </a>
+              <div className="contact__qr-copy">
+                <h4>Join the Waves</h4>
+                <p>Scan to open the club registration form.</p>
+                <a
+                  className="contact__qr-action"
+                  href={REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open registration form <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
