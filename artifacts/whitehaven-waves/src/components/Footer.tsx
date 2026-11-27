@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="footer__links">
           <h4>Navigate</h4>
           <ul>
-            {["about", "lineup", "timetable", "highlights", "staff", "contact"].map(id => (
+            {["about", "timetable", "highlights", "staff", "contact"].map(id => (
               <li key={id}>
                 <a href={`#${id}`} onClick={e => { e.preventDefault(); scrollTo(id); }}>
                   {id.charAt(0).toUpperCase() + id.slice(1)}
