@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <defs>
-    <clipPath id="rounded">
-      <rect x="0" y="0" width="128" height="128" rx="24" ry="24"/>
-    </clipPath>
-  </defs>
-  <image href="/favicon.png" width="128" height="128" preserveAspectRatio="xMidYMid meet" clip-path="url(#rounded)"/>
-</svg>
