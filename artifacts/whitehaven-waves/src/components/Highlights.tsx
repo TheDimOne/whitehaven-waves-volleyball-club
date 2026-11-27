@@ -5,20 +5,20 @@ const videos = [
     tag: "Season Highlights",
     title: "Best Spikes of 2026",
     desc: "Relive the season's most electrifying moments from the Waves.",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    src: "https://www.youtube.com/embed/4okm7CYQL2I",
   },
   {
     tag: "Match Recap",
     title: "Waves vs Coastal United",
     desc: "Full match recap from our biggest win of the season.",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    src: "https://www.youtube.com/embed/5tg6nQ2-m1U",
     delay: 1,
   },
   {
     tag: "Behind the Scenes",
     title: "Inside Training Camp",
     desc: "A look inside a typical week of training with the Waves squad.",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    src: "https://www.youtube.com/embed/tr4SijEEuz0",
     delay: 2,
   },
 ];
@@ -62,7 +62,7 @@ export default function Highlights() {
           <a href="#" className="social-btn social-btn--tiktok" target="_blank" rel="noopener noreferrer">
             TikTok
           </a>
-          <a href="#" className="social-btn social-btn--youtube" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.youtube.com/@WhitehavenWaves" className="social-btn social-btn--youtube" target="_blank" rel="noopener noreferrer">
             YouTube
           </a>
         </div>
