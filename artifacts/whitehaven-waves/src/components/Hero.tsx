@@ -83,8 +83,8 @@ export default function Hero() {
 
       <div className="hero__ticker">
         <div className="ticker__track">
-          {[0, 1].map((group) => (
-            <div className="ticker__group" key={group} aria-hidden={group === 1 ? "true" : undefined}>
+          {[0, 1, 2, 3].map((group) => (
+            <div className="ticker__group" key={group} aria-hidden={group === 0 ? undefined : "true"}>
               {tickerItems.map((item, i) => (
                 <span key={i} className="ticker__item">{item}</span>
               ))}
