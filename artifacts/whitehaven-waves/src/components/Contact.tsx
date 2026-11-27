@@ -57,13 +57,6 @@ export default function Contact() {
                 <a href="mailto:whitehavenwaves@outlook.com">whitehavenwaves@outlook.com</a>
               </div>
             </div>
-            <div className="contact-block">
-              <span className="contact-block__icon">📞</span>
-              <div>
-                <h4>Phone</h4>
-                <a href="tel:+441900000000">+44 1900 000 000</a>
-              </div>
-            </div>
             <div className="contact__social">
               <h4>Follow the Waves</h4>
               <div className="social-links">
