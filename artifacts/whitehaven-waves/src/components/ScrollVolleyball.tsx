@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent, PointerEvent } from "react";
 
 export default function ScrollVolleyball() {
   const [progress, setProgress] = useState(0);
@@ -28,7 +29,7 @@ export default function ScrollVolleyball() {
     window.scrollTo({ top: ratio * maxScroll, behavior: "auto" });
   };
 
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     dragging.current = true;
     event.currentTarget.setPointerCapture(event.pointerId);
     scrollToPointer(event.clientY);
@@ -38,7 +39,7 @@ export default function ScrollVolleyball() {
     if (dragging.current) scrollToPointer(event.clientY);
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     const step = event.shiftKey ? window.innerHeight : window.innerHeight * 0.15;
     if (event.key === "ArrowDown" || event.key === "ArrowRight") {
       event.preventDefault();
