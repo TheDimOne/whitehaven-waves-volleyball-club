@@ -2,23 +2,23 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const videos = [
   {
-    tag: "Season Highlights",
-    title: "Best Spikes of 2026",
-    desc: "Relive the season's most electrifying moments from the Waves.",
-    src: "https://www.youtube.com/embed/4okm7CYQL2I",
+    tag: "Match 1",
+    title: "Whitehaven Waves vs St Bees Match 1 Highlights",
+    desc: "Highlights from Whitehaven Waves vs St Bees.",
+    src: "https://www.youtube.com/embed/tr4SijEEuz0",
   },
   {
-    tag: "Match Recap",
-    title: "Waves vs Coastal United",
-    desc: "Full match recap from our biggest win of the season.",
+    tag: "Match 2",
+    title: "Whitehaven Waves vs St Bees Match 2 Highlights",
+    desc: "Highlights from Whitehaven Waves vs St Bees.",
     src: "https://www.youtube.com/embed/5tg6nQ2-m1U",
     delay: 1,
   },
   {
-    tag: "Behind the Scenes",
-    title: "Inside Training Camp",
-    desc: "A look inside a typical week of training with the Waves squad.",
-    src: "https://www.youtube.com/embed/tr4SijEEuz0",
+    tag: "Match 3",
+    title: "Whitehaven Waves vs St Bees Match 3 Highlights",
+    desc: "Highlights from Whitehaven Waves vs St Bees.",
+    src: "https://www.youtube.com/embed/4okm7CYQL2I",
     delay: 2,
   },
 ];
