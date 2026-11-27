@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Whitehaven Waves | Volleyball Keep-Up</title>
+<style>
+:root{color-scheme:dark;--navy:#071d35;--blue:#087db5;--cyan:#62d7ed;--white:#f4fbff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0,#174d70 0,#0a2945 48%,#06182c 100%);font-family:system-ui,sans-serif;color:var(--white);display:grid;place-items:center;padding:20px}
+main{width:min(920px,100%);text-align:center}.brand{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:#9be9f5;font-weight:800}.brand span{color:white}h1{margin:.35rem 0;font-size:clamp(2rem,6vw,3.4rem);line-height:1}.sub{color:#c3dce9;margin:.7rem 0 1.2rem}.hud{display:flex;justify-content:center;gap:clamp(18px,6vw,60px);margin:12px auto;font-weight:800}.hud small{display:block;color:#9bc8dc;font-size:.68rem;letter-spacing:.15em}.hud strong{font-size:1.55rem} .arena{position:relative;width:100%;height:min(62vh,540px);min-height:340px;border:2px solid #65d8ed;border-radius:20px;overflow:hidden;background:linear-gradient(#0e4160,#0b3150 72%,#0a2943);box-shadow:0 20px 70px #0008,inset 0 0 40px #5ad9ed18;touch-action:pan-y}.arena:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 9.8%,#ffffff09 10%);pointer-events:none}.arena:after{content:"";position:absolute;bottom:0;left:0;right:0;height:5px;background:#67dced}.ball{position:absolute;width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff 0 8%,#f8f8ee 9% 22%,#087bb6 23% 36%,#fff 37% 52%,#087bb6 53% 67%,#f8f8ee 68%);box-shadow:0 5px 15px #0008;z-index:3;will-change:transform}.player{position:absolute;bottom:7px;width:100px;height:120px;transform:translateX(-50%);z-index:2;transition:filter .12s}.head{position:absolute;top:3px;left:37px;width:27px;height:27px;border-radius:50%;background:#e8b88f;border:2px solid #102f49}.body{position:absolute;top:31px;left:25px;width:51px;height:58px;border-radius:15px 15px 8px 8px;background:linear-gradient(90deg,#e9faff,#fff 50%,#bdeef7);border:2px solid #087db5}.body:after{content:"W";position:absolute;inset:12px 0;text-align:center;color:#087db5;font-weight:1000;font-size:25px}.arm{position:absolute;top:39px;width:15px;height:54px;border-radius:10px;background:#e8b88f;transform-origin:top}.arm.left{left:16px;transform:rotate(25deg)}.arm.right{right:16px;transform:rotate(-25deg)}.leg{position:absolute;top:84px;width:19px;height:34px;background:#163b5a;border-radius:7px}.leg.left{left:31px}.leg.right{right:31px}.player.set .arm.left{transform:rotate(-48deg);height:62px}.player.set .arm.right{transform:rotate(48deg);height:62px}.player.dig .body{transform:rotate(13deg)}.player.dig .arm.left{transform:rotate(-68deg)}.player.dig .arm.right{transform:rotate(68deg)}.floorline{position:absolute;bottom:126px;left:0;right:0;border-top:1px dashed #ffffff22}.overlay{position:absolute;inset:0;display:grid;place-items:center;background:#04182dcc;z-index:5;padding:20px}.panel{max-width:420px}.panel h2{font-size:2rem;margin:.2rem}.panel p{color:#c5dce9}.btn{border:0;border-radius:999px;background:#67dced;color:#06243b;padding:13px 28px;font-size:1rem;font-weight:900;cursor:pointer}.btn:hover{filter:brightness(1.1);transform:translateY(-1px)}.hint{color:#a9c8d8;font-size:.85rem;margin:14px 0}.controls{display:flex;justify-content:center;gap:12px;margin-top:12px}.control{width:120px;padding:12px;border:1px solid #69d6e8;border-radius:12px;background:#0e4260;color:white;font-weight:800;touch-action:none}.control:active{background:#176b8d}.hidden{display:none!important}@media(max-width:520px){body{padding:12px}.arena{height:55vh;min-height:330px}.ball{width:36px;height:36px}.hud{gap:28px}.player{transform:translateX(-50%) scale(.88);transform-origin:bottom center}}
+</style>
+</head>
+<body><main>
+<div class="brand">WHITEHAVEN <span>WAVES</span> · VOLLEYBALL</div><h1>KEEP IT UP</h1><p class="sub">How long can you keep the ball off the floor?</p>
+<div class="hud"><div><small>SCORE</small><strong id="score">0</strong></div><div><small>BEST</small><strong id="best">0</strong></div><div><small>LIVES</small><strong id="lives">3</strong></div></div>
+<div class="arena" id="arena"><div class="floorline"></div><div class="ball" id="ball"></div><div class="player" id="player"><div class="head"></div><div class="body"></div><div class="arm left"></div><div class="arm right"></div><div class="leg left"></div><div class="leg right"></div></div>
+<div class="overlay" id="overlay"><div class="panel"><h2>READY?</h2><p>Move your player beneath the ball and tap or press SPACE to set or dig it back up. Don't let it hit the floor.</p><button class="btn" id="start">START GAME</button></div></div></div>
+<div class="controls"><button class="control" id="left">◀ LEFT</button><button class="control" id="hit">SET / DIG</button><button class="control" id="right">RIGHT ▶</button></div>
+<p class="hint">Move with ← → or A / D · Hit with SPACE or click · Touch controls supported</p>
+</main>
+<script>
+const arena=document.getElementById('arena'),ball=document.getElementById('ball'),player=document.getElementById('player'),overlay=document.getElementById('overlay');
+const scoreEl=document.getElementById('score'),bestEl=document.getElementById('best'),livesEl=document.getElementById('lives');
+let w=0,h=0,px=0,bx=0,by=0,vx=2.2,vy=-3.2,score=0,lives=3,best=+(localStorage.getItem('wavesKeepUpBest')||0),running=false,last=0,keys={};
+bestEl.textContent=best;
+function size(){w=arena.clientWidth;h=arena.clientHeight;px=Math.max(50,Math.min(w-50,px||w/2));if(!running){bx=px;by=h*.42}draw()}
+function draw(){player.style.left=px+'px';ball.style.transform='translate('+bx+'px,'+by+'px) translate(-50%,-50%)'}
+function resetBall(){bx=Math.max(35,Math.min(w-35,px+(Math.random()-.5)*100));by=h*.38;vx=(Math.random()-.5)*3.2;vy=2.2}
+function start(){score=0;lives=3;scoreEl.textContent=0;livesEl.textContent=3;px=w/2;resetBall();running=true;overlay.classList.add('hidden');last=performance.now();requestAnimationFrame(loop)}
+function end(){running=false;best=Math.max(best,score);localStorage.setItem('wavesKeepUpBest',best);bestEl.textContent=best;overlay.innerHTML='<div class="panel"><h2>TIME OUT</h2><p>You kept it up for <b>'+score+'</b> touches.</p><button class="btn" id="again">PLAY AGAIN</button></div>';overlay.classList.remove('hidden');document.getElementById('again').onclick=start}
+function hit(){if(!running)return;const cx=bx,cy=by,dist=Math.hypot(cx-px,cy-(h-95));if(dist<115){vy=-Math.max(4.5,Math.min(8,Math.abs(vy)+1.4));vx+=(bx-px)*.045;vx=Math.max(-5,Math.min(5,vx));score++;scoreEl.textContent=score;player.classList.remove('set','dig');player.classList.add(by>h-145?'dig':'set');setTimeout(()=>player.classList.remove('set','dig'),180)}}
+function loop(t){if(!running)return;let dt=Math.min(2,(t-last)/16.67);last=t;
+if(keys.left)px-=5*dt;if(keys.right)px+=5*dt;px=Math.max(45,Math.min(w-45,px));
+bx+=vx*dt;by+=vy*dt;vy+=.16*dt;
+if(bx<20||bx>w-20){vx*=-1;bx=Math.max(20,Math.min(w-20,bx))}
+if(by<20){by=20;vy=Math.abs(vy)}
+if(by>h-20){lives--;livesEl.textContent=lives;if(lives<=0){end();return}resetBall()}
+if(by>h-150&&by<h-45&&Math.abs(bx-px)<65&&vy>0){vy=-Math.max(4.5,Math.abs(vy)+.4);vx+=(bx-px)*.025;score++;scoreEl.textContent=score}
+draw();requestAnimationFrame(loop)}
+function moveTo(e){const r=arena.getBoundingClientRect();px=Math.max(45,Math.min(w-45,e.clientX-r.left))}
+arena.addEventListener('pointermove',moveTo);arena.addEventListener('pointerdown',e=>{moveTo(e);hit()});
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight',' ','a','d','A','D'].includes(e.key))e.preventDefault();if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')keys.left=true;if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')keys.right=true;if(e.key===' ')hit()});
+window.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')keys.left=false;if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')keys.right=false});
+function hold(id,key){const el=document.getElementById(id);el.addEventListener('pointerdown',e=>{e.preventDefault();keys[key]=true});['pointerup','pointerleave','pointercancel'].forEach(ev=>el.addEventListener(ev,()=>keys[key]=false))}
+hold('left','left');hold('right','right');document.getElementById('hit').addEventListener('pointerdown',e=>{e.preventDefault();hit()});document.getElementById('start').onclick=start;
+window.addEventListener('resize',size);size();
+</script></body></html>
