@@ -1555,6 +1555,7 @@ ul { list-style: none; }
 /* Seamless hero ticker: two equal-width groups meet exactly at the loop point. */
 .ticker__track {
   display: flex;
+  gap: 0;
   width: max-content;
   animation: ticker 34s linear infinite;
   will-change: transform;
