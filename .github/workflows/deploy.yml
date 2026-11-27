@@ -38,7 +38,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build website
-        run: pnpm run build
+        run: pnpm --filter @workspace/whitehaven-waves run build
 
       - name: Preserve custom domain
         run: cp CNAME artifacts/whitehaven-waves/dist/public/CNAME
