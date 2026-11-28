@@ -1,0 +1,311 @@
+WHITEHAVEN WAVES VOLLEYBALL CLUB
+WEBSITE UPDATE GUIDE
+====================
+
+Last reviewed: 28 November 2026
+Website: https://whitehavenwaves.co.uk
+Repository: https://github.com/TheDimOne/whitehaven-waves-volleyball-club
+This guide: https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/update.txt
+
+WHO THIS GUIDE IS FOR
+---------------------
+This guide is written for club volunteers and committee members, including people who do not normally work with website code.
+
+The website is built with React and Vite and is published automatically using GitHub Pages. You normally make changes in the GitHub repository. When a change is saved (committed) to the main branch, GitHub Actions builds and publishes the website. You do not need to upload files to a separate web host.
+
+IMPORTANT: Make one small change at a time, check the live website afterwards, and keep a note of what you changed. If you are unsure, ask a technical volunteer to review the change before publishing.
+
+1. HOW TO EDIT THE WEBSITE
+--------------------------
+Repository:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club
+
+Website source folder:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/tree/main/artifacts/whitehaven-waves
+
+For a simple text or link change:
+1. Open the relevant file link in this guide.
+2. Sign in to GitHub with an account that has permission to edit the repository.
+3. Select the pencil icon (Edit this file). If the pencil is unavailable, you may not have write access; ask a repository administrator.
+4. Find the text or link you want to change.
+5. Make the smallest necessary edit. Keep quotation marks, commas, brackets and surrounding code intact.
+6. Select Commit changes, enter a short description (for example, "Update YouTube highlight link"), and commit to the main branch.
+7. Open the repository's Actions tab:
+   https://github.com/TheDimOne/whitehaven-waves-volleyball-club/actions
+8. Check the latest "Deploy Whitehaven Waves" workflow. Wait until it says completed/success. If it fails, do not keep making changes on top of it; inspect the error or ask for help.
+9. Check the live website in a new browser tab. Hard-refresh if the old version is cached (Ctrl+Shift+R on Windows/Linux, Cmd+Shift+R on Mac).
+
+For a non-code file such as an image:
+1. Open the correct folder in GitHub.
+2. Use Add file > Upload files.
+3. Upload the replacement file. If replacing an existing image, use exactly the same filename and folder.
+4. Commit the change.
+5. Wait for the deployment workflow to succeed and check the website.
+
+GitHub's guide to editing files:
+https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
+GitHub's guide to uploading files:
+https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
+
+2. QUICK LINKS: WHERE THE WEBSITE RESOURCES LIVE
+-------------------------------------------------
+Main website source:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/tree/main/artifacts/whitehaven-waves/src
+
+Page sections / components:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/tree/main/artifacts/whitehaven-waves/src/components
+
+Images used by the site (imported into components):
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/tree/main/artifacts/whitehaven-waves/src/assets
+
+Public images, cursor files, favicon, social preview and animated GIF:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/tree/main/artifacts/whitehaven-waves/public
+
+Main stylesheet (colours, layout, sizing, fonts, responsive styling):
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/index.css
+
+Main page assembly (controls which sections appear and in what order):
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/App.tsx
+
+Navigation menu:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Nav.tsx
+
+Deployment workflow:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/.github/workflows/deploy.yml
+
+3. CHANGE YOUTUBE HIGHLIGHT VIDEOS
+----------------------------------
+File:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Highlights.tsx
+
+The video list is near the top of the file. Each video has:
+- tag: the small label shown above the title (for example, "Match 1")
+- title: the video title displayed on the page
+- desc: the short description
+- src: the YouTube embed address
+
+How to get the video ID:
+A normal YouTube link looks like:
+https://www.youtube.com/watch?v=4okm7CYQL2I
+
+The video ID is the part after "v=":
+4okm7CYQL2I
+
+Put that ID at the end of the embed address:
+https://www.youtube-nocookie.com/embed/4okm7CYQL2I
+
+Example:
+src: "https://www.youtube-nocookie.com/embed/VIDEO_ID",
+
+Replace only the video ID, not the rest of the address. Keep the quotation marks and comma. The privacy-enhanced youtube-nocookie.com format is preferred for new embeds.
+
+To add another video, copy one complete video entry (including its opening and closing braces), paste it into the videos list, and change its tag, title, description and video ID. Keep commas between entries. Adding more videos may change the layout; check desktop and mobile after publishing.
+
+YouTube channel:
+https://www.youtube.com/@WhitehavenWaves
+
+4. CHANGE THE CLUB LOGO
+-----------------------
+Navigation/header logo:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/assets/whitehaven-waves-logo.jpg
+
+Footer logo:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/assets/whitehaven-waves-logo-footer.jpg
+
+How to replace:
+1. Prepare the replacement image. A square, high-quality image works best for the header logo. Keep the footer logo suitable for its larger display.
+2. Upload the replacement into the same folder using exactly the existing filename.
+3. GitHub will ask whether to replace the existing file; confirm and commit.
+4. Check the logo on desktop and mobile.
+
+The header logo is imported in Nav.tsx. The footer logo is imported in Footer.tsx. Keeping the same filename means these imports do not need changing.
+
+5. CHANGE THE HERO / BACKGROUND IMAGES
+--------------------------------------
+Image assets:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/tree/main/artifacts/whitehaven-waves/src/assets
+
+Current hero background image:
+hero-crashing-waves.jpg
+
+Brand/waves image:
+whitehaven-waves-brand-waves.jpg
+
+To replace an image, upload the new image into the same folder with the same filename. The existing code and styling can then continue to use it. If you want to use a different filename, a developer must update the image import or CSS reference as well.
+
+Use a suitably large image so it remains clear on wide screens. Compress images before uploading; very large images slow the website, particularly on mobile. Use images the club owns or has permission to publish. Do not upload private member, child or safeguarding images without the appropriate permissions.
+
+6. CHANGE THE CUSTOM MOUSE POINTER
+----------------------------------
+These two images control the custom pointer:
+- Normal pointer: cursor.png
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/public/cursor.png
+- Pointer when hovering over a clickable item: Click.png
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/public/Click.png
+
+To replace either image:
+1. Prepare a transparent PNG if possible.
+2. Upload it to the public folder using exactly the same filename, including capital letters.
+3. Commit, wait for deployment, then test with a mouse on a desktop computer.
+4. Also test that the normal system pointer remains usable when the custom cursor is switched off.
+
+The website's custom cursor is designed for mouse/trackpad devices. It does not replace touch controls on phones and tablets.
+
+7. CHANGE THE FAVICON, SOCIAL PREVIEW OR WELCOME GIF
+----------------------------------------------------
+Favicon (small browser tab icon):
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/public/favicon.png
+
+Social sharing preview image:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/public/opengraph.jpg
+
+Welcome pop-up animation:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/public/hideout.gif
+
+Replace files using the same filenames. For the social preview, keep the image wide (1200 x 630 pixels is a good target). Social platforms may cache an old preview for a while after an update.
+
+8. UPDATE THE CLUB TEAM / COMMITTEE
+-----------------------------------
+File:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Staff.tsx
+
+The staff list is near the top of the file. Each person has:
+- name
+- role
+- emoji (the small illustration used on the card)
+- bio (the short description shown when the card is opened/hovered)
+
+To update a person, change the relevant text inside their entry. To add someone, copy an existing entry and change all four fields. Keep commas and quotation marks in place.
+
+Only publish information that the person has agreed can appear publicly. Take particular care with personal details and information about children.
+
+9. UPDATE THE TRAINING SESSION OR SPIKE LINK
+--------------------------------------------
+File:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Timetable.tsx
+
+The current displayed session is Wednesday, 19:30–21:30. Change the day/time text in this file if the club schedule changes.
+
+The Spike invitation link is also in this file, in the SPIKE_INVITE_URL value near the top. Replace the URL with the current club invitation link if it changes. The Spike app is the club's primary source of truth for session and event updates, so check the live Spike schedule before changing the website.
+
+10. UPDATE SOCIAL MEDIA LINKS
+-----------------------------
+Social links appear in more than one place:
+- Footer social links:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Footer.tsx
+- Highlight section social links:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Highlights.tsx
+- Welcome pop-up social links:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/HideoutWelcome.tsx
+
+Search in each file for instagram.com, tiktok.com or youtube.com and replace the URL. Update all relevant locations so the links agree. Check that the new links open the correct club account.
+
+11. CHANGE THE MAIN TEXT OR ADD A BASIC SECTION
+----------------------------------------------
+Existing section files:
+- About:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/About.tsx
+- Training timetable:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Timetable.tsx
+- Video highlights:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Highlights.tsx
+- Committee and coaches:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Staff.tsx
+- Contact:
+  https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/components/Contact.tsx
+
+For simple wording changes, edit the text in the relevant file without changing the surrounding layout code.
+
+Adding a whole new section is more technical. A developer should:
+1. Create a new component file in src/components, for example News.tsx.
+2. Build the section using the same general pattern as the existing components: a <section> element, a unique id, a heading and content.
+3. Import the component near the top of App.tsx.
+4. Add the component inside <main> in App.tsx in the required display order.
+5. Add a matching navigation link in Nav.tsx if it should appear in the main menu. The link's #id must exactly match the section's id.
+6. Add a matching footer link in Footer.tsx if appropriate.
+7. Add any styling to index.css. Reuse existing classes where possible so the new section matches the current design.
+8. Check keyboard navigation, mobile layout, colour contrast and reduced-motion behaviour.
+
+Do not create a new page URL just by adding a section. A section on the homepage uses an in-page anchor such as #news. A separate SEO-indexable page needs additional routing/build configuration and its own page title, description, canonical URL and sitemap entry. Ask for technical help before creating a separate page.
+
+12. CHANGE COLOURS, SPACING, FONTS OR LAYOUT
+-------------------------------------------
+Main stylesheet:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/src/index.css
+
+This file controls most of the site's visual appearance. Search for the relevant class name (for example, .hero, .staff, .highlights, .nav) and change only the required CSS property.
+
+Common CSS properties:
+- color: text colour
+- background / background-color: background colour
+- font-size: text size
+- padding: space inside an element
+- margin: space outside an element
+- gap: space between grid/flex items
+- border-radius: rounded corners
+- max-width: maximum content width
+
+Avoid broad find-and-replace operations in the stylesheet. Many sections have their own responsive rules. Test on a phone-sized screen as well as a desktop screen.
+
+13. UPDATE SEO DETAILS OR ADD A PAGE
+------------------------------------
+Current page title, description, canonical URL and social metadata are in:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/index.html
+
+Sitemap:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/public/sitemap.xml
+
+Robots file:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/public/robots.txt
+
+If you add a separate page, it needs a working direct URL, unique title and description, a canonical URL pointing to itself, and an entry in sitemap.xml. The current build has special handling for /home in:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/blob/main/artifacts/whitehaven-waves/vite.config.ts
+
+Do not assume that adding a React component automatically creates a separate page URL. Ask a developer to implement and test the routing and deployment output.
+
+After a new page is published, inspect its URL in Google Search Console:
+https://search.google.com/search-console
+You can request indexing, but Google decides when and whether to index it.
+
+14. PUBLISHING AND CHECKING A CHANGE
+------------------------------------
+Every committed change to the main branch should trigger the GitHub Pages deployment workflow.
+
+Check deployment status:
+https://github.com/TheDimOne/whitehaven-waves-volleyball-club/actions
+
+A successful deployment should show a green tick and "completed". If the workflow fails:
+- Open the failed run.
+- Open the failed job and read the error.
+- Do not repeatedly retry without understanding the error.
+- Revert the change or ask a developer for help if the cause is unclear.
+
+After successful deployment:
+- Open https://whitehavenwaves.co.uk/home
+- Test the changed feature.
+- Test on desktop and mobile.
+- Check links and images.
+- Check the browser console if you know how.
+- If an image appears unchanged, hard-refresh or try a private/incognito window.
+
+15. THINGS YOU MUST NOT CHANGE OR PUBLISH CASUALLY
+-------------------------------------------------
+- Do not publish passwords, API keys, Cloudflare secrets, private access tokens, personal contact details or private member information.
+- Never put a Turnstile secret key in website source code. The public site key is not a secret; the verification secret belongs in the Cloudflare Worker secret settings.
+- Do not remove or change deployment workflow files unless you understand GitHub Pages deployment.
+- Do not change package files, lockfiles, Vite configuration or build scripts for routine content edits.
+- Do not delete files just because their purpose is unclear.
+- Do not upload photographs or personal information about members, particularly children, without appropriate permission and safeguarding checks.
+- Do not paste private registration-form responses, medical details or safeguarding information into public GitHub files.
+- Remember: this repository is public. Anything committed to it can be viewed by the public, and deleting a file later does not necessarily remove it from Git history.
+
+16. KEEPING THIS GUIDE UP TO DATE
+---------------------------------
+Whenever the website's structure, filenames, assets, deployment process or external services change, update this file in the same set of changes.
+
+When adding a new image or component, add its repository link and a short explanation here. When removing or renaming a resource, correct the link in this guide. Review the guide at least every few months and after significant redesigns.
+
+If a change involves authentication, databases, payments, personal data, forms, privacy/cookie handling, Cloudflare Worker code or a new external integration, treat it as a technical/security change and have it reviewed before publishing.
+
+END OF GUIDE
+============
